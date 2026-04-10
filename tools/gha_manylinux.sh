@@ -57,6 +57,12 @@ echo "PYTHON_DIR: ${PYTHON_DIR}"
 # The pagmo release tag can be overridden from the workflow if needed.
 PAGMO_VERSION_RELEASE="${PAGMO_VERSION_RELEASE:-2.19.1}"
 
+export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+
+echo "OMP_NUM_THREADS: ${OMP_NUM_THREADS}"
+echo "OPENBLAS_NUM_THREADS: ${OPENBLAS_NUM_THREADS}"
+
 # Tag builds publish wheels; non-tag builds only build/test.
 if [[ "${GITHUB_REF:-}" == "refs/tags/v"* ]]; then
 	echo "Tag build detected"
@@ -91,7 +97,7 @@ cmake -DBoost_NO_BOOST_CMAKE=ON \
 	-DPAGMO_WITH_EIGEN3=yes \
 	-DPAGMO_WITH_NLOPT=yes \
 	-DPAGMO_WITH_IPOPT=yes \
-	-DPAGMO_ENABLE_IPO=ON \
+	-DPAGMO_ENABLE_IPO=OFF \
 	-DCMAKE_BUILD_TYPE=Release ../
 cmake --build . --target install --parallel 1
 
@@ -102,7 +108,7 @@ mkdir -p build
 cd build
 cmake -DBoost_NO_BOOST_CMAKE=ON \
 	-DCMAKE_BUILD_TYPE=Release \
-	-DPYGMO_ENABLE_IPO=ON \
+	-DPYGMO_ENABLE_IPO=OFF \
 	-DPython3_EXECUTABLE="${PYBIN}/python" ../
 cmake --build . --target install --parallel 1
 
@@ -117,7 +123,7 @@ auditwheel repair dist/pygmo*.whl -w ./dist2
 # Smoke-test the repaired wheel in a clean root context.
 cd /
 "${PYBIN}/python" -m pip install --force-reinstall "${GITHUB_WORKSPACE}/build/wheel/dist2/pygmo"*.whl
-"${PYBIN}/ipcluster" start --daemonize=True
+"${PYBIN}/ipcluster" start --daemonize=True -n 1
 sleep 20
 "${PYBIN}/python" -c "import pygmo; pygmo.test.run_test_suite(1); pygmo.mp_island.shutdown_pool(); pygmo.mp_bfe.shutdown_pool()"
 
