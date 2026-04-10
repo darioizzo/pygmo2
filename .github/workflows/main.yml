@@ -23,7 +23,7 @@ jobs:
      strategy:
        fail-fast: false
        matrix:
-         build-type: ["Python314", "Python313", "Python312", "Python311"]
+         build-type: ["Python313", "Python312", "Python311"]
      steps:
        - uses: actions/checkout@v4
        - uses: dbhi/qus/action@main
