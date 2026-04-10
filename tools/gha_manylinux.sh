@@ -93,7 +93,7 @@ cmake -DBoost_NO_BOOST_CMAKE=ON \
 	-DPAGMO_WITH_IPOPT=yes \
 	-DPAGMO_ENABLE_IPO=ON \
 	-DCMAKE_BUILD_TYPE=Release ../
-cmake --build . --target install --parallel 4
+cmake --build . --target install --parallel 2
 
 # Configure and install pygmo against the selected Python interpreter.
 cd "${GITHUB_WORKSPACE}"
