@@ -18,28 +18,28 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  #arm64-manylinux228:
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       build-type: ["Python314", "Python313", "Python312", "Python311"]
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: dbhi/qus/action@main
-  #     - name: Build
-  #       run: >
-  #        docker run \
-  #          --env PYGMO_BUILD_TYPE=${{ matrix.build-type }} \
-  #          --env GITHUB_WORKSPACE=${GITHUB_WORKSPACE} \
-  #          --env GITHUB_REF=${GITHUB_REF} \
-  #          --env TWINE_USERNAME=${{ secrets.TWINE_USERNAME }} \
-  #          --env TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }} \
-  #          --volume ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} \
-  #          --workdir ${GITHUB_WORKSPACE} \
-  #          --platform linux/arm64 \
-  #          pagmo2/manylinux228_aarch64_with_deps:latest \
-  #          bash tools/gha_manylinux.sh
+  arm64-manylinux228:
+     runs-on: ubuntu-latest
+     strategy:
+       fail-fast: false
+       matrix:
+         build-type: ["Python314", "Python313", "Python312", "Python311"]
+     steps:
+       - uses: actions/checkout@v4
+       - uses: dbhi/qus/action@main
+       - name: Build
+         run: >
+          docker run \
+            --env PYGMO_BUILD_TYPE=${{ matrix.build-type }} \
+            --env GITHUB_WORKSPACE=${GITHUB_WORKSPACE} \
+            --env GITHUB_REF=${GITHUB_REF} \
+            --env TWINE_USERNAME=${{ secrets.TWINE_USERNAME }} \
+            --env TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }} \
+            --volume ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} \
+            --workdir ${GITHUB_WORKSPACE} \
+            --platform linux/arm64 \
+            pagmo2/manylinux228_aarch64_with_deps:latest \
+            bash tools/gha_manylinux.sh
   #amd64-manylinux228:
   #   runs-on: ubuntu-latest
   #   strategy:
@@ -116,35 +116,35 @@ jobs:
   #      shell: bash -l {0}
   #      env:
   #        PYGMO_PYTHON_VERSION: ${{ matrix.python-version }}
-  windows-x64:
-    runs-on: windows-2022
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.14"]
-    steps:
-      - uses: actions/checkout@v4
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v2
-      - uses: conda-incubator/setup-miniconda@v3
-        with:
-          activate-environment: pygmo
-          auto-update-conda: true
-          python-version: ${{ matrix.python-version }}
-          channels: conda-forge
-          channel-priority: strict
-      - name: Build
-        run: .\tools\gha_windows.ps1
-        shell: powershell
-  build-and-deploydocs:
-    if: ${{ github.event_name }} == 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install and Build 🔧 
-        run: bash tools/gha_deploydocs.sh
-      - name: Upload to github pages 🚀
-        if: ${{ github.event_name == 'push' }}
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: doc/_build/html # The folder the action should deploy.
+  #windows-x64:
+  #  runs-on: windows-2022
+  #  strategy:
+  #    fail-fast: false
+  #    matrix:
+  #      python-version: ["3.14"]
+  #  steps:
+  #    - uses: actions/checkout@v4
+  #    - name: Add msbuild to PATH
+  #      uses: microsoft/setup-msbuild@v2
+  #    - uses: conda-incubator/setup-miniconda@v3
+  #      with:
+  #        activate-environment: pygmo
+  #        auto-update-conda: true
+  #        python-version: ${{ matrix.python-version }}
+  #        channels: conda-forge
+  #        channel-priority: strict
+  #    - name: Build
+  #      run: .\tools\gha_windows.ps1
+  #      shell: powershell
+  #build-and-deploydocs:
+  #  if: ${{ github.event_name }} == 'push'
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - uses: actions/checkout@v2
+  #    - name: Install and Build 🔧 
+  #      run: bash tools/gha_deploydocs.sh
+  #    - name: Upload to github pages 🚀
+  #      if: ${{ github.event_name == 'push' }}
+  #      uses: JamesIves/github-pages-deploy-action@v4
+  #      with:
+  #        folder: doc/_build/html # The folder the action should deploy.
