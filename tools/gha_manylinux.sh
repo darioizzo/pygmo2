@@ -93,7 +93,7 @@ cmake -DBoost_NO_BOOST_CMAKE=ON \
 	-DPAGMO_WITH_IPOPT=yes \
 	-DPAGMO_ENABLE_IPO=ON \
 	-DCMAKE_BUILD_TYPE=Release ../
-cmake --build . --target install --parallel 2
+cmake --build . --target install --parallel 1
 
 # Configure and install pygmo against the selected Python interpreter.
 cd "${GITHUB_WORKSPACE}"
@@ -104,7 +104,7 @@ cmake -DBoost_NO_BOOST_CMAKE=ON \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DPYGMO_ENABLE_IPO=ON \
 	-DPython3_EXECUTABLE="${PYBIN}/python" ../
-cmake --build . --target install --parallel 2
+cmake --build . --target install --parallel 1
 
 # Build wheel from the wheel/ packaging directory and repair it for manylinux.
 cd wheel
