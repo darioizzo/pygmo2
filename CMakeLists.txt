@@ -1,6 +1,5 @@
-# NOTE: FindPython3 supported since CMake 3.12.0, but we use
-# options that appear in 3.18.
-cmake_minimum_required(VERSION 3.18.0)
+# NOTE: we rely on modern package-config based dependency discovery.
+cmake_minimum_required(VERSION 3.20.0)
 
 # Set default build type to "Release".
 # NOTE: this should be done before the project command since the latter can set
@@ -143,8 +142,8 @@ message(STATUS "Python3 installation directory: ${Python3_SITEARCH}")
 set(PYGMO_INSTALL_PATH "" CACHE STRING "pygmo module installation path")
 mark_as_advanced(PYGMO_INSTALL_PATH)
 
-# Boost setup.
-include(PygmoFindBoost)
+# Boost setup (config mode, no FindBoost module fallback).
+find_package(Boost 1.68.0 REQUIRED COMPONENTS serialization CONFIG)
 
 # pybind11.
 find_package(pybind11 REQUIRED)
