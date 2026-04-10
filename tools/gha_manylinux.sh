@@ -1,123 +1,129 @@
 #!/usr/bin/env bash
 
-# Echo each command.
+# Fail fast on command errors, undefined vars, and pipeline failures.
+set -Eeuo pipefail
+# Keep shell tracing enabled so CI logs show every step and argument.
 set -x
 
-# Exit on error.
-set -e
+# Required inputs from the workflow/container invocation.
+: "${PYGMO_BUILD_TYPE:?PYGMO_BUILD_TYPE is required}"
+: "${GITHUB_WORKSPACE:?GITHUB_WORKSPACE is required}"
 
-# Report on the environrnt variables used for this build
+# Basic context useful for debugging CI runs.
 echo "PYGMO_BUILD_TYPE: ${PYGMO_BUILD_TYPE}"
-echo "GITHUB_REF: ${GITHUB_REF}"
+echo "GITHUB_REF: ${GITHUB_REF:-<unset>}"
 echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
-# No idea why but this following line seems to be necessary (added: 18/01/2023)
-git config --global --add safe.directory ${GITHUB_WORKSPACE}
-BRANCH_NAME=`git rev-parse --abbrev-ref HEAD`
-echo "BRANCH_NAME: ${BRANCH_NAME}"
 
-
-# 1 - We read for what python wheels have to be built
-if [[ ${PYGMO_BUILD_TYPE} == *38* ]]; then
-	PYTHON_DIR="cp38-cp38"
-elif [[ ${PYGMO_BUILD_TYPE} == *39* ]]; then
-	PYTHON_DIR="cp39-cp39"
-elif [[ ${PYGMO_BUILD_TYPE} == *310* ]]; then
-	PYTHON_DIR="cp310-cp310"
-elif [[ ${PYGMO_BUILD_TYPE} == *311* ]]; then
-	PYTHON_DIR="cp311-cp311"
-elif [[ ${PYGMO_BUILD_TYPE} == *312* ]]; then
-	PYTHON_DIR="cp312-cp312"
+# Preflight: list interpreters baked into the manylinux image.
+# This makes Python-version mismatches obvious in the logs.
+echo "Preflight: available Python installs under /opt/python"
+if [[ -d /opt/python ]]; then
+	ls -1 /opt/python || true
 else
-	echo "Invalid build type: ${PYGMO_BUILD_TYPE}"
+	echo "WARNING: /opt/python directory is missing"
+fi
+
+for expected_dir in cp311-cp311 cp312-cp312 cp313-cp313 cp314-cp314; do
+	if [[ -x "/opt/python/${expected_dir}/bin/python" ]]; then
+		echo "Found interpreter: /opt/python/${expected_dir}/bin/python"
+	else
+		echo "Missing interpreter: /opt/python/${expected_dir}/bin/python"
+	fi
+done
+
+# Needed when running in GitHub Actions containers.
+git config --global --add safe.directory "${GITHUB_WORKSPACE}"
+
+# Map workflow build type to the manylinux Python ABI directory.
+case "${PYGMO_BUILD_TYPE}" in
+	*314*) PYTHON_DIR="cp314-cp314" ;;
+	*313*) PYTHON_DIR="cp313-cp313" ;;
+	*312*) PYTHON_DIR="cp312-cp312" ;;
+	*311*) PYTHON_DIR="cp311-cp311" ;;
+	*)
+		echo "Invalid build type '${PYGMO_BUILD_TYPE}'. Supported: Python314, Python313, Python312, Python311"
+		exit 1
+		;;
+esac
+
+# Resolve python/pip/ipcluster binaries for the selected interpreter.
+PYBIN="/opt/python/${PYTHON_DIR}/bin"
+if [[ ! -x "${PYBIN}/python" ]]; then
+	echo "Python executable not found at ${PYBIN}/python. Update the manylinux image for ${PYTHON_DIR}."
 	exit 1
 fi
-
-# Report the inferred directory where python is found
 echo "PYTHON_DIR: ${PYTHON_DIR}"
 
-# The pagmo version to be used for releases.
-export PAGMO_VERSION_RELEASE="2.19.1"
+# The pagmo release tag can be overridden from the workflow if needed.
+PAGMO_VERSION_RELEASE="${PAGMO_VERSION_RELEASE:-2.19.1}"
 
-# Check if this is a release build.
-if [[ "${GITHUB_REF}" == "refs/tags/v"* ]]; then
-    echo "Tag build detected"
-	export PYGMO_RELEASE_BUILD="yes"
+# Tag builds publish wheels; non-tag builds only build/test.
+if [[ "${GITHUB_REF:-}" == "refs/tags/v"* ]]; then
+	echo "Tag build detected"
+	PYGMO_RELEASE_BUILD="yes"
 else
 	echo "Non-tag build detected"
+	PYGMO_RELEASE_BUILD="no"
 fi
 
-# Python mandatory deps.
-/opt/python/${PYTHON_DIR}/bin/pip install cloudpickle numpy
-# Python optional deps.
-/opt/python/${PYTHON_DIR}/bin/pip install networkx ipyparallel scipy
+# Install packaging/build/test runtime dependencies in the selected Python.
+"${PYBIN}/python" -m pip install --upgrade pip setuptools wheel
+"${PYBIN}/python" -m pip install cloudpickle numpy
+"${PYBIN}/python" -m pip install networkx ipyparallel scipy auditwheel twine
 
-# In the pagmo2/manylinux228_x86_64_with_deps:latest image in dockerhub
-# the working directory is /root/install, we will install pagmo there
+# Build and install pagmo2 (released tarball on tags, git HEAD otherwise).
 cd /root/install
-
-# Install pagmo
 if [[ "${PYGMO_RELEASE_BUILD}" == "yes" ]]; then
-	curl -L -o pagmo2.tar.gz https://github.com/esa/pagmo2/archive/refs/tags/v${PAGMO_VERSION_RELEASE}.tar.gz
+	curl -fsSL -o pagmo2.tar.gz "https://github.com/esa/pagmo2/archive/refs/tags/v${PAGMO_VERSION_RELEASE}.tar.gz"
 	tar xzf pagmo2.tar.gz
-	cd pagmo2-${PAGMO_VERSION_RELEASE}
+	cd "pagmo2-${PAGMO_VERSION_RELEASE}"
 else
-	git clone https://github.com/esa/pagmo2.git
+	rm -rf pagmo2
+	git clone --depth 1 https://github.com/esa/pagmo2.git
 	cd pagmo2
 fi
 
-mkdir build
+# Configure and install pagmo2 into the container's default prefix.
+rm -rf build
+mkdir -p build
 cd build
 cmake -DBoost_NO_BOOST_CMAKE=ON \
 	-DPAGMO_WITH_EIGEN3=yes \
 	-DPAGMO_WITH_NLOPT=yes \
 	-DPAGMO_WITH_IPOPT=yes \
 	-DPAGMO_ENABLE_IPO=ON \
-	-DCMAKE_BUILD_TYPE=Release ../;
-make -j4 install
+	-DCMAKE_BUILD_TYPE=Release ../
+cmake --build . --target install --parallel 4
 
-# pygmo
-cd ${GITHUB_WORKSPACE}
-mkdir build
+# Configure and install pygmo against the selected Python interpreter.
+cd "${GITHUB_WORKSPACE}"
+rm -rf build
+mkdir -p build
 cd build
 cmake -DBoost_NO_BOOST_CMAKE=ON \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DPYGMO_ENABLE_IPO=ON \
-	-DPython3_EXECUTABLE=/opt/python/${PYTHON_DIR}/bin/python ../;
-make -j2 install
+	-DPython3_EXECUTABLE="${PYBIN}/python" ../
+cmake --build . --target install --parallel 2
 
-# Making the wheel and installing it
+# Build wheel from the wheel/ packaging directory and repair it for manylinux.
 cd wheel
-# Copy the installed pygmo files, wherever they might be in /usr/local,
-# into the current dir.
+rm -rf pygmo
 cp -r ../pygmo ./
-# Create the wheel and repair it.
-/opt/python/${PYTHON_DIR}/bin/python setup.py bdist_wheel
-auditwheel repair dist/pygmo* -w ./dist2
-# Try to install it and run the tests.
+
+"${PYBIN}/python" setup.py bdist_wheel
+auditwheel repair dist/pygmo*.whl -w ./dist2
+
+# Smoke-test the repaired wheel in a clean root context.
 cd /
-/opt/python/${PYTHON_DIR}/bin/pip install ${GITHUB_WORKSPACE}/build/wheel/dist2/pygmo*
-/opt/python/${PYTHON_DIR}/bin/ipcluster start --daemonize=True
+"${PYBIN}/python" -m pip install --force-reinstall "${GITHUB_WORKSPACE}/build/wheel/dist2/pygmo"*.whl
+"${PYBIN}/ipcluster" start --daemonize=True
 sleep 20
-/opt/python/${PYTHON_DIR}/bin/python -c "import pygmo; pygmo.test.run_test_suite(1); pygmo.mp_island.shutdown_pool(); pygmo.mp_bfe.shutdown_pool()"
+"${PYBIN}/python" -c "import pygmo; pygmo.test.run_test_suite(1); pygmo.mp_island.shutdown_pool(); pygmo.mp_bfe.shutdown_pool()"
 
-# Upload to pypi. This variable will contain something if this is a tagged build (vx.y.z), otherwise it will be empty.
-# if [[ "${PYGMO_RELEASE_VERSION}" != "" ]]; then
-# 	echo "Release build detected, creating the source code archive."
-# 	cd ${GITHUB_WORKSPACE}
-# 	TARBALL_NAME=${GITHUB_WORKSPACE}/build/wheel/dist2/pygmo-${PYGMO_RELEASE_VERSION}.tar
-# 	git archive --format=tar --prefix=pygmo2/ -o ${TARBALL_NAME} ${BRANCH_NAME}
-# 	tar -rf ${TARBALL_NAME} --transform "s,^build/wheel/pygmo.egg-info,pygmo2," build/wheel/pygmo.egg-info/PKG-INFO
-# 	gzip -9 ${TARBALL_NAME}
-# 	echo "... uploading all to PyPi."
-# 	/opt/python/${PYTHON_DIR}/bin/pip install twine
-# 	/opt/python/${PYTHON_DIR}/bin/twine upload -u ci4esa ${GITHUB_WORKSPACE}/build/wheel/dist2/pygmo*
-# fi
-
-# Upload to PyPI.
+# Upload wheels only for version tags.
 if [[ "${PYGMO_RELEASE_BUILD}" == "yes" ]]; then
-	/opt/python/${PYTHON_DIR}/bin/pip install twine
-	/opt/python/${PYTHON_DIR}/bin/twine upload -u ci4esa ${GITHUB_WORKSPACE}/build/wheel/dist2/pygmo*
+	"${PYBIN}/python" -m twine upload --non-interactive --skip-existing "${GITHUB_WORKSPACE}/build/wheel/dist2/pygmo"*.whl
 fi
 
-set +e
 set +x
