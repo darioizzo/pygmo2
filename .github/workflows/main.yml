@@ -18,44 +18,44 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  arm64-manylinux228:
+  #arm64-manylinux228:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       build-type: ["Python313", "Python312", "Python311"]
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: dbhi/qus/action@main
+  #     - name: Build
+  #       run: >
+  #        docker run \
+  #          --env PYGMO_BUILD_TYPE=${{ matrix.build-type }} \
+  #          --env GITHUB_WORKSPACE=${GITHUB_WORKSPACE} \
+  #          --env GITHUB_REF=${GITHUB_REF} \
+  #          --env TWINE_USERNAME=${{ secrets.TWINE_USERNAME }} \
+  #          --env TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }} \
+  #          --volume ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} \
+  #          --workdir ${GITHUB_WORKSPACE} \
+  #          --platform linux/arm64 \
+  #          pagmo2/manylinux228_aarch64_with_deps:latest \
+  #          bash tools/gha_manylinux.sh
+  amd64-manylinux228:
      runs-on: ubuntu-latest
      strategy:
        fail-fast: false
        matrix:
          build-type: ["Python313", "Python312", "Python311"]
+     container:
+      image: pagmo2/manylinux228_x86_64_with_deps:latest
+      env:
+        PYGMO_BUILD_TYPE: ${{ matrix.build-type }}
+        TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
+        TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
      steps:
        - uses: actions/checkout@v4
-       - uses: dbhi/qus/action@main
        - name: Build
-         run: >
-          docker run \
-            --env PYGMO_BUILD_TYPE=${{ matrix.build-type }} \
-            --env GITHUB_WORKSPACE=${GITHUB_WORKSPACE} \
-            --env GITHUB_REF=${GITHUB_REF} \
-            --env TWINE_USERNAME=${{ secrets.TWINE_USERNAME }} \
-            --env TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }} \
-            --volume ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} \
-            --workdir ${GITHUB_WORKSPACE} \
-            --platform linux/arm64 \
-            pagmo2/manylinux228_aarch64_with_deps:latest \
-            bash tools/gha_manylinux.sh
-  #amd64-manylinux228:
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       build-type: ["Python314", "Python313", "Python312", "Python311"]
-  #   container:
-  #    image: pagmo2/manylinux228_x86_64_with_deps:latest
-  #    env:
-  #      PYGMO_BUILD_TYPE: ${{ matrix.build-type }}
-  #      TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
-  #      TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - name: Build
-  #       run: bash tools/gha_manylinux.sh
+         run: bash tools/gha_manylinux.sh
   #linux-x64:
   #  runs-on: ubuntu-24.04
   #  strategy:

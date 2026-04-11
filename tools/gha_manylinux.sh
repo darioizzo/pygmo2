@@ -123,7 +123,8 @@ auditwheel repair dist/pygmo*.whl -w ./dist2
 # Smoke-test the repaired wheel in a clean root context.
 cd /
 "${PYBIN}/python" -m pip install --force-reinstall "${GITHUB_WORKSPACE}/build/wheel/dist2/pygmo"*.whl
-"${PYBIN}/ipcluster" start --daemonize=True -n 1
+# Keep at least 2 engines: ipyparallel island tests target engine id 1.
+"${PYBIN}/ipcluster" start --daemonize=True -n 2
 sleep 20
 "${PYBIN}/python" -c "import pygmo; pygmo.test.run_test_suite(1); pygmo.mp_island.shutdown_pool(); pygmo.mp_bfe.shutdown_pool()"
 
