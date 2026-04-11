@@ -63,6 +63,28 @@ export OPENBLAS_NUM_THREADS=1
 echo "OMP_NUM_THREADS: ${OMP_NUM_THREADS}"
 echo "OPENBLAS_NUM_THREADS: ${OPENBLAS_NUM_THREADS}"
 
+# Lightweight system diagnostics to help compare amd64 vs arm runs.
+echo "System diagnostics:"
+uname -a || true
+echo "Architecture: $(uname -m)"
+echo "CPU count: $(nproc)"
+free -h || true
+if command -v lscpu >/dev/null 2>&1; then
+	lscpu || true
+fi
+if [[ -f /proc/meminfo ]]; then
+	echo "Top of /proc/meminfo:" && head -n 6 /proc/meminfo || true
+fi
+
+# Small helper that uses /usr/bin/time -v when available to record peak RSS
+run_time() {
+	if command -v /usr/bin/time >/dev/null 2>&1; then
+		/usr/bin/time -v "$@"
+	else
+		"$@"
+	fi
+}
+
 # Tag builds publish wheels; non-tag builds only build/test.
 if [[ "${GITHUB_REF:-}" == "refs/tags/v"* ]]; then
 	echo "Tag build detected"
@@ -99,7 +121,7 @@ cmake -DBoost_NO_BOOST_CMAKE=ON \
 	-DPAGMO_WITH_IPOPT=yes \
 	-DPAGMO_ENABLE_IPO=OFF \
 	-DCMAKE_BUILD_TYPE=Release ../
-cmake --build . --target install --parallel 1
+run_time cmake --build . --target install --parallel 1
 
 # Configure and install pygmo against the selected Python interpreter.
 cd "${GITHUB_WORKSPACE}"
@@ -110,14 +132,14 @@ cmake -DBoost_NO_BOOST_CMAKE=ON \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DPYGMO_ENABLE_IPO=OFF \
 	-DPython3_EXECUTABLE="${PYBIN}/python" ../
-cmake --build . --target install --parallel 1
+run_time cmake --build . --target install --parallel 1
 
 # Build wheel from the wheel/ packaging directory and repair it for manylinux.
 cd wheel
 rm -rf pygmo
 cp -r ../pygmo ./
 
-"${PYBIN}/python" setup.py bdist_wheel
+run_time "${PYBIN}/python" setup.py bdist_wheel
 auditwheel repair dist/pygmo*.whl -w ./dist2
 
 # Smoke-test the repaired wheel in a clean root context.
