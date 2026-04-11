@@ -57,12 +57,6 @@ echo "PYTHON_DIR: ${PYTHON_DIR}"
 # The pagmo release tag can be overridden from the workflow if needed.
 PAGMO_VERSION_RELEASE="${PAGMO_VERSION_RELEASE:-2.19.1}"
 
-export OMP_NUM_THREADS=1
-export OPENBLAS_NUM_THREADS=1
-
-echo "OMP_NUM_THREADS: ${OMP_NUM_THREADS}"
-echo "OPENBLAS_NUM_THREADS: ${OPENBLAS_NUM_THREADS}"
-
 # Lightweight system diagnostics to help compare amd64 vs arm runs.
 echo "System diagnostics:"
 uname -a || true
@@ -121,7 +115,7 @@ cmake -DBoost_NO_BOOST_CMAKE=ON \
 	-DPAGMO_WITH_IPOPT=yes \
 	-DPAGMO_ENABLE_IPO=OFF \
 	-DCMAKE_BUILD_TYPE=Release ../
-run_time cmake --build . --target install --parallel 1
+run_time cmake --build . --target install --parallel 2
 
 # Configure and install pygmo against the selected Python interpreter.
 cd "${GITHUB_WORKSPACE}"
@@ -132,7 +126,7 @@ cmake -DBoost_NO_BOOST_CMAKE=ON \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DPYGMO_ENABLE_IPO=OFF \
 	-DPython3_EXECUTABLE="${PYBIN}/python" ../
-run_time cmake --build . --target install --parallel 1
+run_time cmake --build . --target install --parallel 2
 
 # Build wheel from the wheel/ packaging directory and repair it for manylinux.
 cd wheel
