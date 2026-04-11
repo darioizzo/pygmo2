@@ -18,146 +18,113 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  arm64-manylinux228-py312:
-     runs-on: ubuntu-latest
-     steps:
-       - uses: actions/checkout@v2
-       - uses: dbhi/qus/action@main
-       - name: Build
-         # Use Docker Command Directly to take more control over the platform
-         run: >
-          docker run \
-            --env PYGMO_BUILD_TYPE=Python312 \
-            --env GITHUB_WORKSPACE=${GITHUB_WORKSPACE} \
-            --env GITHUB_REF=${GITHUB_REF} \
-            --env TWINE_USERNAME=${{ secrets.TWINE_USERNAME }} \
-            --env TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }} \
-            --volume ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} \
-            --workdir ${GITHUB_WORKSPACE} \
-            --platform linux/arm64 \
-            pagmo2/manylinux228_aarch64_with_deps:latest \
-            bash tools/gha_manylinux.sh
-  arm64-manylinux228-py311:
-     runs-on: ubuntu-latest
-     steps:
-       - uses: actions/checkout@v2
-       - uses: dbhi/qus/action@main
-       - name: Build
-         # Use Docker Command Directly to take more control over the platform
-         run: >
-          docker run \
-            --env PYGMO_BUILD_TYPE=Python311 \
-            --env GITHUB_WORKSPACE=${GITHUB_WORKSPACE} \
-            --env GITHUB_REF=${GITHUB_REF} \
-            --env TWINE_USERNAME=${{ secrets.TWINE_USERNAME }} \
-            --env TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }} \
-            --volume ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} \
-            --workdir ${GITHUB_WORKSPACE} \
-            --platform linux/arm64 \
-            pagmo2/manylinux228_aarch64_with_deps:latest \
-            bash tools/gha_manylinux.sh
-  arm64-manylinux228-py310:
-     runs-on: ubuntu-latest
-     steps:
-       - uses: actions/checkout@v2
-       - uses: dbhi/qus/action@main
-       - name: Build
-         # Use Docker Command Directly to take more control over the platform
-         run: >
-          docker run \
-            --env PYGMO_BUILD_TYPE=Python310 \
-            --env GITHUB_WORKSPACE=${GITHUB_WORKSPACE} \
-            --env GITHUB_REF=${GITHUB_REF} \
-            --env TWINE_USERNAME=${{ secrets.TWINE_USERNAME }} \
-            --env TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }} \
-            --volume ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} \
-            --workdir ${GITHUB_WORKSPACE} \
-            --platform linux/arm64 \
-            pagmo2/manylinux228_aarch64_with_deps:latest \
-            bash tools/gha_manylinux.sh
-  arm64-manylinux228-py39:
-     runs-on: ubuntu-latest
-     steps:
-       - uses: actions/checkout@v2
-       - uses: dbhi/qus/action@main
-       - name: Build
-         # Use Docker Command Directly to take more control over the platform
-         run: >
-          docker run \
-            --env PYGMO_BUILD_TYPE=Python39 \
-            --env GITHUB_WORKSPACE=${GITHUB_WORKSPACE} \
-            --env GITHUB_REF=${GITHUB_REF} \
-            --env TWINE_USERNAME=${{ secrets.TWINE_USERNAME }} \
-            --env TWINE_PASSWORD=${{ secrets.TWINE_PASSWORD }} \
-            --volume ${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE} \
-            --workdir ${GITHUB_WORKSPACE} \
-            --platform linux/arm64 \
-            pagmo2/manylinux228_aarch64_with_deps:latest \
-            bash tools/gha_manylinux.sh
-  amd64-manylinux228-py312:
-     runs-on: ubuntu-latest
+  arm64-manylinux228:
+     runs-on: ubuntu-24.04-arm
+     strategy:
+       fail-fast: false
+       matrix:
+         build-type: ["Python313", "Python312", "Python311"]
      container:
-      image: pagmo2/manylinux228_x86_64_with_deps:latest
-      env: 
-        PYGMO_BUILD_TYPE: "Python312"
+      image: pagmo2/manylinux228_aarch64_with_deps:latest
+      env:
+        PYGMO_BUILD_TYPE: ${{ matrix.build-type }}
         TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
      steps:
-       - uses: actions/checkout@v2
+       - uses: actions/checkout@v4
        - name: Build
          run: bash tools/gha_manylinux.sh
-  amd64-manylinux228-py311:
+  amd64-manylinux228:
      runs-on: ubuntu-latest
+     strategy:
+       fail-fast: false
+       matrix:
+         build-type: ["Python313", "Python312", "Python311"]
      container:
       image: pagmo2/manylinux228_x86_64_with_deps:latest
-      env: 
-        PYGMO_BUILD_TYPE: "Python311"
+      env:
+        PYGMO_BUILD_TYPE: ${{ matrix.build-type }}
         TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
      steps:
-       - uses: actions/checkout@v2
+       - uses: actions/checkout@v4
        - name: Build
          run: bash tools/gha_manylinux.sh
-  amd64-manylinux228-py310:
-     runs-on: ubuntu-latest
-     container:
-      image: pagmo2/manylinux228_x86_64_with_deps:latest
-      env: 
-        PYGMO_BUILD_TYPE: "Python310"
-        TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
-     steps:
-       - uses: actions/checkout@v2
-       - name: Build
-         run: bash tools/gha_manylinux.sh
-  amd64-manylinux228-py39:
-     runs-on: ubuntu-latest
-     container:
-      image: pagmo2/manylinux228_x86_64_with_deps:latest
-      env: 
-        PYGMO_BUILD_TYPE: "Python39"
-        TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
-     steps:
-       - uses: actions/checkout@v2
-       - name: Build
-         run: bash tools/gha_manylinux.sh
-  macos-10_15-py310:
-    runs-on: macos-10.15
+  linux-x64:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.14", "3.13", "3.12"]
     steps:
-      - uses: actions/checkout@v2
-      - name: Build
-        run: bash tools/gha_macos-10.15-py310.sh
-  windows-2019-py311:
-    runs-on: windows-2019
-    steps:
-      - uses: actions/checkout@v2
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.0.2
-      - uses: conda-incubator/setup-miniconda@v2
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
         with:
+          activate-environment: pygmo
           auto-update-conda: true
-          python-version: 3.11
+          python-version: ${{ matrix.python-version }}
+          channels: conda-forge
+          channel-priority: strict
+      - name: Build
+        run: bash tools/gha_unix_nonmanylinux.sh
+        shell: bash -l {0}
+        env:
+          PYGMO_PYTHON_VERSION: ${{ matrix.python-version }}
+  linux-arm64:
+    runs-on: ubuntu-24.04-arm
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.14"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          activate-environment: pygmo
+          auto-update-conda: true
+          python-version: ${{ matrix.python-version }}
+          channels: conda-forge
+          channel-priority: strict
+      - name: Build
+        run: bash tools/gha_unix_nonmanylinux.sh
+        shell: bash -l {0}
+        env:
+          PYGMO_PYTHON_VERSION: ${{ matrix.python-version }}
+  macos-arm64:
+    runs-on: macos-14
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.14"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          activate-environment: pygmo
+          auto-update-conda: true
+          python-version: ${{ matrix.python-version }}
+          channels: conda-forge
+          channel-priority: strict
+      - name: Build
+        run: bash tools/gha_unix_nonmanylinux.sh
+        shell: bash -l {0}
+        env:
+          PYGMO_PYTHON_VERSION: ${{ matrix.python-version }}
+  windows-x64:
+    runs-on: windows-2022
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.14"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v2
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          activate-environment: pygmo
+          auto-update-conda: true
+          python-version: ${{ matrix.python-version }}
           channels: conda-forge
           channel-priority: strict
       - name: Build

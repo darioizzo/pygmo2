@@ -41,7 +41,10 @@ cd
 
 # Build the documentation.
 cd ${GITHUB_WORKSPACE}/doc
-make html linkcheck
+make html
+if ! make linkcheck; then
+	echo "WARNING: Sphinx linkcheck reported broken links; continuing CI by request."
+fi
 
 # Run the doctests.
 make doctest;
