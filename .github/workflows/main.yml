@@ -28,12 +28,11 @@ jobs:
       image: pagmo2/manylinux228_aarch64_with_deps:latest
       env:
         PYGMO_BUILD_TYPE: ${{ matrix.build-type }}
-        TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
      steps:
        - uses: actions/checkout@v4
        - name: Build
          run: bash tools/gha_manylinux.sh
+      
   amd64-manylinux228:
      runs-on: ubuntu-latest
      strategy:
@@ -44,12 +43,11 @@ jobs:
       image: pagmo2/manylinux228_x86_64_with_deps:latest
       env:
         PYGMO_BUILD_TYPE: ${{ matrix.build-type }}
-        TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
      steps:
        - uses: actions/checkout@v4
        - name: Build
          run: bash tools/gha_manylinux.sh
+      
   linux-x64:
     runs-on: ubuntu-24.04
     strategy:
@@ -130,8 +128,9 @@ jobs:
       - name: Build
         run: .\tools\gha_windows.ps1
         shell: powershell
+  
   build-and-deploydocs:
-    if: ${{ github.event_name }} == 'push'
+    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
