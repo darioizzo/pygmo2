@@ -1,189 +1,386 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pygmo &#8212; pygmo 2.19.8 documentation</title>
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>pygmo &mdash; pygmo 2.14.0 documentation</title>
   
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
   
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="shortcut icon" href="_static/logo_favico.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="install.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
   
   
-  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
 
   
-  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="pygmo 2.14.0 documentation" href="#"/>
-        <link rel="next" title="Installation" href="install.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-   
-  <div class="wy-grid-for-nav">
-
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
 
-          
-            <a href="#" class="icon icon-home"> pygmo
-          
-
-          
-          </a>
-
-          
-            
-            
-              <div class="version">
-                2.14.0
-              </div>
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    <p class="title logo__title">pygmo 2.19.8 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Capabilities</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/tutorials.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_problem.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">problem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_algorithm.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">algorithm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_population.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_island.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_archipelago.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/evolving_a_population.html">Evolving a population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/coding_udp_simple.html">Coding a simple User Defined Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/coding_udp_constrained.html">Coding a User Defined Problem with constraints (NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/coding_udp_minlp.html">Coding a User Defined Problem with an integer part (MINLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/coding_udp_multi_objective.html">Coding a User Defined Problem with multiple objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/udp_meta_decorator.html">Using the decorator meta-problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/coding_udi.html">Coding a User Defined Island</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/nlopt_basics.html">A first tutorial on the use of NLopt solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/moo.html">Basic Multi-Objective Functionalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/moo_moead.html">Using pygmo’s <code class="xref py py-class docutils literal notranslate"><span class="pre">moead</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/hypervolume.html">Getting started with hypervolumes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/hypervolume_advanced.html">Advanced hypervolume computation and analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/hypervolume_approx.html">Approximating the hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/cec2006_gaco_benchmark.html">Benchmarking Extended Ant Colony Optimization on CEC2006 problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/cec2013_comp.html">Participating to the CEC2013 Competition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/solving_schwefel_20.html">Solving the 20 dimensional Schwefel problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/cmaes_vs_xnes.html">Comparing algorithms: the case of xNES and CMA-ES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/zdt3_maco_benchmark.html">Benchmarking Multi-Objective Hypervolume-based Ant Colony Optimization on ZDT3 problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/nspso_tutorial_zdt1_2.html">Benchmarking Nondominated Sorting Particle Swarm Optimizer (NSPSO) on ZDT1 and ZDT2 problems</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api_reference.html">API reference</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="algorithm.html">Algorithm class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problem.html">Problem class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="population.html">Population class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="island.html">Island class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archipelago.html">Archipelago class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bfe.html">Batch fitness evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r_policy.html">Replacement policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s_policy.html">Selection policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellanea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html">List of problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">List of algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="islands.html">List of islands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bfes.html">List of batch evaluators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topologies.html">List of topologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r_policies.html">List of replacement policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s_policies.html">List of selection policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generic_utils.html">Generic optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mo_utils.html">Multi-objective optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="con_utils.html">Constrained optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gh_utils.html">Gradient and Hessians utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hv_utils.html">Hypervolume utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="genetic_op_utils.html">Generic optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html">Plotting utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="known_issues.html">Known issues</a></li>
 </ul>
 
-            
-          
-        </div>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
       </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <main id="main-content" class="bd-main">
         
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">pygmo</a>
         
-      </nav>
 
+<div class="sbt-scroll-pixel-helper"></div>
 
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
       
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
 
 
 
 
 
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/esa/pygmo2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
 
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/esa/pygmo2/issues/new?title=Issue%20on%20page%20%2Findex.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
 
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="#">Docs</a> &raquo;</li>
-        
-      <li>pygmo</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
   </ul>
-
-  
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
   
-<style>
-/* CSS overrides for sphinx_rtd_theme */
 
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
 
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
 
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
 
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<div class="section" id="pygmo">
-<h1>pygmo<a class="headerlink" href="#pygmo" title="Permalink to this headline">¶</a></h1>
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>pygmo</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="pygmo">
+<h1>pygmo<a class="headerlink" href="#pygmo" title="Permalink to this headline">#</a></h1>
 <p>pygmo is a scientific Python library for massively parallel optimization.
 It is built
 around the idea of providing a unified interface to optimization
@@ -193,21 +390,35 @@ and to make their deployment in massively parallel environments easy.</p>
 sided to state-of-the-art optimization algorithms
 (Simplex Methods, SQP methods, interior points methods, …)
 and can be easily mixed (also with your newly-invented algorithms)
-to build a super-algorithm exploiting algoritmic cooperation via the
+to build a super-algorithm exploiting algorithmic cooperation via the
 asynchronous, generalized island model.</p>
 <p>pygmo can be used to solve constrained, unconstrained, single objective,
 multiple objective, continuous and integer optimization
 problems, stochastic and deterministic problems,
 as well as to perform research on novel algorithms and paradigms, and
 easily compare them to state-of-the-art implementations of established ones.</p>
-<p>If you are using pygmo as part of your research, teaching, or other activities,
-we would be grateful if you could star
-the repository and/or cite our work. The DOI of the latest version and
-other citation resources are available
-at <a class="reference external" href="https://doi.org/10.5281/zenodo.1045336">this link</a>.</p>
-<p>pygmo is based on the <a class="reference external" href="https://esa.github.io/pagmo2/">pagmo C++ library</a>.</p>
+<p>If you are using pygmo as part of your research, teaching, or other activities, we would be grateful if you could star
+the repository and/or cite our work. For citation purposes, you can use the following BibTex entry, which refers
+to the <a class="reference external" href="https://doi.org/10.21105/joss.02338">pygmo paper</a> in the Journal of Open Source Software:</p>
+<div class="highlight-bibtex notranslate"><div class="highlight"><pre><span></span><span class="nc">@article</span><span class="p">{</span><span class="nl">Biscani2020</span><span class="p">,</span>
+<span class="w">  </span><span class="na">doi</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{10.21105/joss.02338}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">url</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{https://doi.org/10.21105/joss.02338}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">year</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{2020}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">publisher</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{The Open Journal}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">volume</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{5}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">number</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{53}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">pages</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{2338}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">author</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Francesco Biscani and Dario Izzo}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">title</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{A parallel global multiobjective framework for optimization: pagmo}</span><span class="p">,</span>
+<span class="w">  </span><span class="na">journal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Journal of Open Source Software}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The DOI of the latest version of the software is available at
+<a class="reference external" href="https://doi.org/10.5281/zenodo.1045336">this link</a>.</p>
+<p>pygmo is based on the <a class="reference external" href="https://github.com/esa/pagmo2">pagmo C++ library</a>.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="install.html#dependencies">Dependencies</a></li>
@@ -225,80 +436,121 @@ at <a class="reference external" href="https://doi.org/10.5281/zenodo.1045336">t
 <li class="toctree-l2"><a class="reference internal" href="overview.html#list-of-batch-fitness-evaluators">List of batch fitness evaluators</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/tutorials.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/tutorials.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/tutorials.html#coding-your-own-problem-udp">Coding your own problem (UDP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/tutorials.html#meta-problems">Meta-problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/tutorials.html#coding-your-own-island-udi">Coding your own island (UDI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/tutorials.html#local-optimization">Local optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/tutorials.html#multi-objective-optimization">Multi-objective optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/tutorials.html#hypervolumes">Hypervolumes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/tutorials.html#advanced-examples">Advanced Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api_reference.html#core-classes">Core classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_reference.html#implemented-user-defined-classes">Implemented user-defined classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_reference.html#utilities">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="credits.html#main-developers">Main developers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id2">2.19.7 (2024-08-09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id3">2.19.6 (2024-02-21)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id5">2.19.0 (2023-01-19)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id8">2.18.0 (2021-08-03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id12">2.16.1 (2020-12-22)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id15">2.16.0 (2020-09-25)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id18">2.15.0 (2020-04-02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id21">2.14.1 (2020-03-06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id23">2.14.0 (2020-03-04)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="known_issues.html">Known issues</a></li>
 </ul>
 </div>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="right-next"
+       href="install.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Installation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
 </div>
 
-
-           </div>
-           <div class="articleComments">
+                </footer>
+              
+            </div>
             
-           </div>
+            
+              
+            
           </div>
-          <footer>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
+  <div class="footer-item">
+    
+<p class="component-author">
+By pagmo development team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021, pagmo development team.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2020, pagmo development team.
-
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
-        </div>
-      </div>
-
-    </section>
-
   </div>
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'2.14.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/language_data.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-   
-
-</body>
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>

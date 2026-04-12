@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Use of the class population &#8212; pygmo 2.19.8 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/using_population';</script>
+    <link rel="shortcut icon" href="../_static/logo_favico.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Use of the class island" href="using_island.html" />
+    <link rel="prev" title="Use of the class algorithm" href="using_algorithm.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">pygmo 2.19.8 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Capabilities</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="tutorials.html">Tutorials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="using_problem.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">problem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_algorithm.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">algorithm</span></code></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_island.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_archipelago.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="evolving_a_population.html">Evolving a population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_simple.html">Coding a simple User Defined Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_constrained.html">Coding a User Defined Problem with constraints (NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_minlp.html">Coding a User Defined Problem with an integer part (MINLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_multi_objective.html">Coding a User Defined Problem with multiple objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="udp_meta_decorator.html">Using the decorator meta-problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udi.html">Coding a User Defined Island</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nlopt_basics.html">A first tutorial on the use of NLopt solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moo.html">Basic Multi-Objective Functionalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moo_moead.html">Using pygmo’s <code class="xref py py-class docutils literal notranslate"><span class="pre">moead</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume.html">Getting started with hypervolumes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume_advanced.html">Advanced hypervolume computation and analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume_approx.html">Approximating the hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cec2006_gaco_benchmark.html">Benchmarking Extended Ant Colony Optimization on CEC2006 problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cec2013_comp.html">Participating to the CEC2013 Competition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solving_schwefel_20.html">Solving the 20 dimensional Schwefel problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmaes_vs_xnes.html">Comparing algorithms: the case of xNES and CMA-ES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zdt3_maco_benchmark.html">Benchmarking Multi-Objective Hypervolume-based Ant Colony Optimization on ZDT3 problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nspso_tutorial_zdt1_2.html">Benchmarking Nondominated Sorting Particle Swarm Optimizer (NSPSO) on ZDT1 and ZDT2 problems</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api_reference.html">API reference</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm.html">Algorithm class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html">Problem class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../population.html">Population class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../island.html">Island class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../archipelago.html">Archipelago class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bfe.html">Batch fitness evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_policy.html">Replacement policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../s_policy.html">Selection policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html">Miscellanea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problems.html">List of problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">List of algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../islands.html">List of islands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bfes.html">List of batch evaluators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topologies.html">List of topologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_policies.html">List of replacement policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../s_policies.html">List of selection policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generic_utils.html">Generic optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mo_utils.html">Multi-objective optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../con_utils.html">Constrained optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gh_utils.html">Gradient and Hessians utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hv_utils.html">Hypervolume utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../genetic_op_utils.html">Generic optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting.html">Plotting utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../known_issues.html">Known issues</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/esa/pygmo2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/esa/pygmo2/issues/new?title=Issue%20on%20page%20%2Ftutorials/using_population.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tutorials/using_population.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Use of the class population</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="use-of-the-class-population">
+<span id="py-tutorial-using-population"></span><h1>Use of the class <a class="reference internal" href="../population.html#pygmo.population" title="pygmo.population"><code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a><a class="headerlink" href="#use-of-the-class-population" title="Permalink to this headline">#</a></h1>
+<img alt="../_images/pop_no_text.png" src="../_images/pop_no_text.png" />
+<p>In pygmo, a <a class="reference internal" href="../population.html#pygmo.population" title="pygmo.population"><code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a> is a storage for candidate solutions
+to some <a class="reference internal" href="../problem.html#pygmo.problem" title="pygmo.problem"><code class="xref py py-class docutils literal notranslate"><span class="pre">problem</span></code></a> (sometimes called individuals).
+It thus contains a <a class="reference internal" href="../problem.html#pygmo.problem" title="pygmo.problem"><code class="xref py py-class docutils literal notranslate"><span class="pre">problem</span></code></a> and a number of decision
+vectors (chromosomes) and fitness vectors, each associated to a unique ID as
+to allow some degree of tracking.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pygmo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prob</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">problem</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">rosenbrock</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="mi">4</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop1</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop2</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span> <span class="mi">723782378</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the code above, after the trivial import of the pygmo package, we first define a <a class="reference internal" href="../problem.html#pygmo.problem" title="pygmo.problem"><code class="xref py py-class docutils literal notranslate"><span class="pre">problem</span></code></a>
+from <a class="reference internal" href="../problems.html#pygmo.rosenbrock" title="pygmo.rosenbrock"><code class="xref py py-class docutils literal notranslate"><span class="pre">rosenbrock</span></code></a>, and then we construct two populations (i.e. two sets of candidate solutions).
+The first population, <code class="docutils literal notranslate"><span class="pre">pop1</span></code>, is empty, while the second population is initialized with
+five candidate solutions, hence also causing five fitness evaluations. The candidate solutions in
+<code class="docutils literal notranslate"><span class="pre">pop2</span></code> are randomly created within the box-bounds of the <a class="reference internal" href="../problem.html#pygmo.problem" title="pygmo.problem"><code class="xref py py-class docutils literal notranslate"><span class="pre">problem</span></code></a> using
+the random seed passed as kwarg.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pop1</span><span class="p">))</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pop1</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_fevals</span><span class="p">())</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pop2</span><span class="p">))</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pop2</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_fevals</span><span class="p">())</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+<p>The full inspection of a <a class="reference internal" href="../population.html#pygmo.population" title="pygmo.population"><code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a> is possible, as usual,
+via its methods or glancing to the screen print of the entire class:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pop2</span><span class="p">)</span> 
+<span class="gp">...</span>
+
+<span class="go">List of individuals:</span>
+<span class="go">#0:</span>
+<span class="go">    ID:                     10207561574636104601</span>
+<span class="go">    Decision vector:        [-0.777137, 7.91467, -4.31933, 5.92765]</span>
+<span class="go">    Fitness vector:         [470010]</span>
+<span class="go">#1:</span>
+<span class="go">    ID:                     15637512834538262525</span>
+<span class="go">    Decision vector:        [8.94985, 0.924838, 4.39905, -1.17683]</span>
+<span class="go">    Fitness vector:         [670339]</span>
+<span class="go">#2:</span>
+<span class="go">    ID:                     15983142956381075935</span>
+<span class="go">    Decision vector:        [-0.291054, 4.99031, 1.34008, -0.00609471]</span>
+<span class="go">    Fitness vector:         [58271.1]</span>
+<span class="go">#3:</span>
+<span class="go">    ID:                     9198455452901607935</span>
+<span class="go">    Decision vector:        [2.18419, -1.04727, 6.35101, 6.39632]</span>
+<span class="go">    Fitness vector:         [121365]</span>
+<span class="go">#4:</span>
+<span class="go">    ID:                     4553447107323210017</span>
+<span class="go">    Decision vector:        [7.50729, -1.14561, 5.98053, -3.48833]</span>
+<span class="go">    Fitness vector:         [487030]</span>
+</pre></div>
+</div>
+<p>Individuals, i.e. new candidate solutions can be put into a population calling
+its <a class="reference internal" href="../population.html#pygmo.population.push_back" title="pygmo.population.push_back"><code class="xref py py-func docutils literal notranslate"><span class="pre">push_back()</span></code></a> method:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pop1</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.4</span><span class="p">])</span> <span class="c1"># correct size</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">pop1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop1</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_fevals</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop1</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">])</span> <span class="c1"># wrong size</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;.../lib/python3.6/doctest.py&quot;</span>, line <span class="m">1330</span>, in <span class="n">__run</span>
+<span class="w">    </span><span class="n">compileflags</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">test</span><span class="o">.</span><span class="n">globs</span><span class="p">)</span>
+  File <span class="nb">&quot;&lt;doctest default[3]&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="w">    </span><span class="n">pop1</span><span class="o">.</span><span class="n">push_back</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">])</span>
+<span class="gr">ValueError</span><span class="w">:</span>
+<span class="x">function: check_decision_vector</span>
+<span class="x">where: /Users/darioizzo/Documents/pagmo2/include/pagmo/problem.hpp, 1835</span>
+<span class="x">what: Length of decision vector is 3, should be 4</span>
+</pre></div>
+</div>
+<p>Some consistency checks are done by <a class="reference internal" href="../population.html#pygmo.population.push_back" title="pygmo.population.push_back"><code class="xref py py-func docutils literal notranslate"><span class="pre">push_back()</span></code></a>, e.g. on the decision vector
+length.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Decision vectors that are outside of the box bounds are allowed to be
+pushed back into a population</p>
+</div>
+<p>The snippet above will trigger fitness function evaluations as the decision vector is always associated to a
+fitness vector in a <a class="reference internal" href="../population.html#pygmo.population" title="pygmo.population"><code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a>. If the fitness vector associated to a chromosome is known,
+you may still push it back in a population and avoid triggering a fitness re-evaluation by typing:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pop1</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">0.2</span><span class="p">],</span> <span class="n">f</span> <span class="o">=</span> <span class="p">[</span><span class="mf">11.2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">pop1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop1</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_fevals</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>When designing user-defined algorithms (UDAs) it is often important to be able to change
+some individual decision vector:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pop1</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_fevals</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pop1</span><span class="o">.</span><span class="n">get_x</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> 
+<span class="go">[0.1  0.2  0.3  0.4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop1</span><span class="o">.</span><span class="n">set_x</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mf">3.</span><span class="p">,</span><span class="mf">4.</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop1</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_fevals</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pop1</span><span class="o">.</span><span class="n">get_f</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">[2705.]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop1</span><span class="o">.</span><span class="n">set_xf</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mf">3.</span><span class="p">,</span><span class="mf">4.</span><span class="p">],</span> <span class="p">[</span><span class="mf">8.43469444</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop1</span><span class="o">.</span><span class="n">problem</span><span class="o">.</span><span class="n">get_fevals</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pop1</span><span class="o">.</span><span class="n">get_f</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">[8.43469444]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using the method <a class="reference internal" href="../population.html#pygmo.population.set_xf" title="pygmo.population.set_xf"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_xf()</span></code></a> or:func:<cite>~pygmo.population.push_back()</cite> it is possible to avoid
+triggering fitness function evaluations, but it is also possible to inject
+spurious information into the population (i.e. breaking the relation between
+decision vectors and fitness vectors imposed by the problem)</p>
+</div>
+<p>The best individual in a population can be extracted as:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># The decision vector</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop1</span><span class="o">.</span><span class="n">get_x</span><span class="p">()[</span><span class="n">pop1</span><span class="o">.</span><span class="n">best_idx</span><span class="p">()]</span> 
+<span class="go">array([1.,  2.,  3.,  4.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The fitness vector</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop1</span><span class="o">.</span><span class="n">get_f</span><span class="p">()[</span><span class="n">pop1</span><span class="o">.</span><span class="n">best_idx</span><span class="p">()]</span>
+<span class="go">array([8.43469444])</span>
+</pre></div>
+</div>
+<p>The best individual that ever lived in a population, i.e. the <em>champion</em> can also be extracted as:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># The decision vector</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop1</span><span class="o">.</span><span class="n">champion_x</span> 
+<span class="go">array([1.,  2.,  3.,  4.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The fitness vector</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop1</span><span class="o">.</span><span class="n">champion_f</span>
+<span class="go">array([8.43469444])</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <em>champion</em> is not necessarily identical to the best individual in the current population
+as it actually keeps the memory of all past individuals that were at some point in the population</p>
+</div>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="using_algorithm.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">algorithm</span></code></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="using_island.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By pagmo development team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021, pagmo development team.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

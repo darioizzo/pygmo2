@@ -1,209 +1,413 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Installation &#8212; pygmo 2.19.8 documentation</title>
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; pygmo 2.14.0 documentation</title>
   
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
   
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'install';</script>
     <link rel="shortcut icon" href="_static/logo_favico.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Capabilities" href="overview.html" />
+    <link rel="prev" title="pygmo" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
   
   
-  
-
-  
-
-  
-  
-    
-
-  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
   
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
-
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
-
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="pygmo 2.14.0 documentation" href="index.html"/>
-        <link rel="next" title="Capabilities" href="overview.html"/>
-        <link rel="prev" title="pygmo" href="index.html"/> 
-
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
   
-  <script src="_static/js/modernizr.min.js"></script>
-
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-   
-  <div class="wy-grid-for-nav">
-
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
-
-          
-            <a href="index.html" class="icon icon-home"> pygmo
-          
-
-          
-          </a>
-
-          
-            
-            
-              <div class="version">
-                2.14.0
-              </div>
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#packages">Packages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#conda">Conda</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pip">pip</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#arch-linux">Arch Linux</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#installation-from-source">Installation from source</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#verifying-the-installation">Verifying the installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting help</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Capabilities</a></li>
-</ul>
-
-            
-          
-        </div>
-      </div>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
     </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <div class="bd-sidebar-primary bd-sidebar">
         
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">pygmo</a>
-        
-      </nav>
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">pygmo 2.19.8 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Capabilities</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/tutorials.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_problem.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">problem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_algorithm.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">algorithm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_population.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_island.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_archipelago.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/evolving_a_population.html">Evolving a population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/coding_udp_simple.html">Coding a simple User Defined Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/coding_udp_constrained.html">Coding a User Defined Problem with constraints (NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/coding_udp_minlp.html">Coding a User Defined Problem with an integer part (MINLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/coding_udp_multi_objective.html">Coding a User Defined Problem with multiple objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/udp_meta_decorator.html">Using the decorator meta-problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/coding_udi.html">Coding a User Defined Island</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/nlopt_basics.html">A first tutorial on the use of NLopt solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/moo.html">Basic Multi-Objective Functionalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/moo_moead.html">Using pygmo’s <code class="xref py py-class docutils literal notranslate"><span class="pre">moead</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/hypervolume.html">Getting started with hypervolumes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/hypervolume_advanced.html">Advanced hypervolume computation and analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/hypervolume_approx.html">Approximating the hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/cec2006_gaco_benchmark.html">Benchmarking Extended Ant Colony Optimization on CEC2006 problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/cec2013_comp.html">Participating to the CEC2013 Competition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/solving_schwefel_20.html">Solving the 20 dimensional Schwefel problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/cmaes_vs_xnes.html">Comparing algorithms: the case of xNES and CMA-ES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/zdt3_maco_benchmark.html">Benchmarking Multi-Objective Hypervolume-based Ant Colony Optimization on ZDT3 problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/nspso_tutorial_zdt1_2.html">Benchmarking Nondominated Sorting Particle Swarm Optimizer (NSPSO) on ZDT1 and ZDT2 problems</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api_reference.html">API reference</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="algorithm.html">Algorithm class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problem.html">Problem class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="population.html">Population class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="island.html">Island class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="archipelago.html">Archipelago class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bfe.html">Batch fitness evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r_policy.html">Replacement policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s_policy.html">Selection policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellanea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html">List of problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">List of algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="islands.html">List of islands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bfes.html">List of batch evaluators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topologies.html">List of topologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r_policies.html">List of replacement policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s_policies.html">List of selection policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generic_utils.html">Generic optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mo_utils.html">Multi-objective optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="con_utils.html">Constrained optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gh_utils.html">Gradient and Hessians utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hv_utils.html">Hypervolume utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="genetic_op_utils.html">Generic optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html">Plotting utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="known_issues.html">Known issues</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
+      </div>
       
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <main id="main-content" class="bd-main">
         
-      <li>Installation</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
         
-            
-            <a href="_sources/install.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/esa/pygmo2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/esa/pygmo2/issues/new?title=Issue%20on%20page%20%2Finstall.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
   </ul>
-
-  
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/install.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
   
-<style>
-/* CSS overrides for sphinx_rtd_theme */
 
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
 
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
 
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
 
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Installation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencies">Dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages">Packages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda">Conda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip">pip</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arch-linux">Arch Linux</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-from-source">Installation from source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifying-the-installation">Verifying the installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help">Getting help</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h1>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">#</a></h2>
 <p>pygmo has the following <strong>mandatory</strong> runtime dependencies:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.python.org/">Python</a> 3.4 or later (Python 2.x is
 <strong>not</strong> supported),</p></li>
-<li><p>the <a class="reference external" href="https://esa.github.io/pagmo2/">pagmo C++ library</a>, version 2.13 or later,</p></li>
+<li><p>the <a class="reference external" href="https://esa.github.io/pagmo2/">pagmo C++ library</a>, version 2.19 or later,</p></li>
 <li><p>the <a class="reference external" href="https://www.boost.org/doc/libs/release/libs/serialization/doc/index.html">Boost serialization library</a>,
 version 1.60 or later,</p></li>
 <li><p><a class="reference external" href="https://numpy.org/">NumPy</a>,</p></li>
@@ -212,49 +416,52 @@ version 1.60 or later,</p></li>
 <p>Additionally, pygmo has the following <strong>optional</strong> runtime
 dependencies:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://dill.readthedocs.io">dill</a>, which can be used as an
-alternative serialization backend,</p></li>
 <li><p><a class="reference external" href="https://matplotlib.org/">Matplotlib</a>, which is used by a few
-plotting utilities.</p></li>
+plotting utilities,</p></li>
+<li><p><a class="reference external" href="https://networkx.github.io/">NetworkX</a>, which is used for
+importing/exporting topologies as graphs,</p></li>
+<li><p><a class="reference external" href="https://www.scipy.org/">SciPy</a>, which is used in the implementation
+of the <a class="reference internal" href="algorithms.html#pygmo.scipy_optimize" title="pygmo.scipy_optimize"><code class="xref py py-class docutils literal notranslate"><span class="pre">scipy_optimize</span></code></a> algorithm wrapper.</p></li>
 </ul>
-</div>
-<div class="section" id="packages">
-<h2>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="packages">
+<h2>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">#</a></h2>
 <p>pygmo packages are available from a variety
 of package managers on several platforms.</p>
-<div class="section" id="conda">
-<h3>Conda<a class="headerlink" href="#conda" title="Permalink to this headline">¶</a></h3>
-<p>pygmo is available via the <a class="reference external" href="https://conda.io/docs/">conda</a>
+<section id="conda">
+<h3>Conda<a class="headerlink" href="#conda" title="Permalink to this headline">#</a></h3>
+<p>pygmo is available via the <a class="reference external" href="https://docs.conda.io/en/latest/">conda</a>
 package manager for Linux, OSX and Windows
 thanks to the infrastructure provided by <a class="reference external" href="https://conda-forge.org/">conda-forge</a>.
 In order to install pygmo via conda, you just need to add <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code>
 to the channels, and then we can immediately install pygmo:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> conda config --add channels conda-forge
-<span class="gp">$</span> conda install pygmo
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>conda-forge
+<span class="gp">$ </span>conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>channel_priority<span class="w"> </span>strict
+<span class="gp">$ </span>conda<span class="w"> </span>install<span class="w"> </span>pygmo
 </pre></div>
 </div>
 <p>The conda packages for pygmo are maintained by the core development team,
 and they are regularly updated when new pygmo versions are released.</p>
-<p>Please refer to the <a class="reference external" href="https://conda.io/docs/">conda documentation</a>
+<p>Please refer to the <a class="reference external" href="https://docs.conda.io/en/latest/">conda documentation</a>
 for instructions on how to setup and manage
 your conda installation.</p>
-</div>
-<div class="section" id="pip">
-<h3>pip<a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="pip">
+<h3>pip<a class="headerlink" href="#pip" title="Permalink to this headline">#</a></h3>
 <p>pygmo is also available on Linux via the <a class="reference external" href="https://pip.pypa.io/en/stable/">pip</a>
 package installer. The installation of pygmo with pip is straightforward:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install pygmo
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>pygmo
 </pre></div>
 </div>
 <p>If you want to install pygmo for a single user instead of
 system-wide, which is in general a good idea, you can do:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install --user pygmo
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>pygmo
 </pre></div>
 </div>
 <p>An even better idea is to make use of Python’s
 <a class="reference external" href="https://virtualenv.pypa.io/en/latest/">virtual environments</a>.</p>
 <p>The pip packages for pygmo are maintained by the core development team,
-and they are regularly updated when new pygmo versions are released.</p>
+and they are updated when new pygmo versions are released.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Note however that we <strong>strongly</strong> encourage users to install pygmo with conda
@@ -270,15 +477,20 @@ The conda packages do not suffer from this issue.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>Any bug reported against the pip build and not reproduced with other installation methods
+(e.g., conda package, installation from source) will be automatically closed as invalid.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Due to a lack of manpower, we are currently unable to provide
 pip packages for Windows or OSX. If you are willing to help us
 out, please get in contact with us on the
-<a class="reference external" href="https://gitter.im/pagmo2/Lobby">gitter channel</a> or open
-an issue on <a class="reference external" href="https://github.com/esa/pygmo2/issues">github</a>.</p>
+<a class="reference external" href="https://gitter.im/pagmo2/Lobby">gitter channel</a> or (even better)
+open a PR on <a class="reference external" href="https://github.com/esa/pygmo2/pulls">github</a>.</p>
 </div>
-</div>
-<div class="section" id="arch-linux">
-<h3>Arch Linux<a class="headerlink" href="#arch-linux" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="arch-linux">
+<h3>Arch Linux<a class="headerlink" href="#arch-linux" title="Permalink to this headline">#</a></h3>
 <p>pygmo is available on the <a class="reference external" href="https://aur.archlinux.org">Arch User Repository</a> (AUR) in Arch Linux. It is
 recommended to use an AUR helper like
 <a class="reference external" href="https://aur.archlinux.org/packages/yay/">yay</a> or
@@ -286,29 +498,29 @@ recommended to use an AUR helper like
 See the <a class="reference external" href="https://wiki.archlinux.org/index.php/AUR_helpers">AUR helpers</a> page on
 the Arch Linux wiki for more info.</p>
 <p>Install <code class="docutils literal notranslate"><span class="pre">python-pygmo</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> yay -S python-pygmo
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>yay<span class="w"> </span>-S<span class="w"> </span>python-pygmo
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="installation-from-source">
-<h2>Installation from source<a class="headerlink" href="#installation-from-source" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="installation-from-source">
+<h2>Installation from source<a class="headerlink" href="#installation-from-source" title="Permalink to this headline">#</a></h2>
 <p>In order to install pygmo from source, you will need:</p>
 <ul class="simple">
-<li><p>a C++11 capable compiler (any recent version of GCC,
+<li><p>a C++17 capable compiler (recent versions of GCC,
 Clang or MSVC should do),</p></li>
 <li><p>a <a class="reference external" href="https://www.python.org/">Python</a> installation,</p></li>
-<li><p><a class="reference external" href="https://github.com/pybind/pybind11">pybind11</a>,</p></li>
-<li><p>the <a class="reference external" href="https://esa.github.io/pagmo2/">pagmo C++ library</a>,</p></li>
+<li><p><a class="reference external" href="https://github.com/pybind/pybind11">pybind11</a> (version &gt;= 2.10),</p></li>
+<li><p>the <a class="reference external" href="https://esa.github.io/pagmo2/">pagmo C++ library</a>, (version &gt;=2.19)</p></li>
 <li><p>the <a class="reference external" href="https://www.boost.org/">Boost libraries</a>,</p></li>
-<li><p><a class="reference external" href="https://cmake.org/">CMake</a>, version 3.3 or later.</p></li>
+<li><p><a class="reference external" href="https://cmake.org/">CMake</a>, version 3.18 or later.</p></li>
 </ul>
 <p>After making sure the dependencies are installed on your system, you can
 download the pygmo source code from the
 <a class="reference external" href="https://github.com/esa/pygmo/releases">GitHub release page</a>. Alternatively,
 and if you like living on the bleeding edge, you can get the very latest
 version of pygmo via <code class="docutils literal notranslate"><span class="pre">git</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git clone https://github.com/esa/pygmo2.git
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/esa/pygmo2.git
 </pre></div>
 </div>
 <p>We follow the usual PR-based development workflow, thus pygmo’s <code class="docutils literal notranslate"><span class="pre">master</span></code>
@@ -317,9 +529,9 @@ branch is normally kept in a working state.</p>
 source code, go to pygmo’s
 source tree, create a <code class="docutils literal notranslate"><span class="pre">build</span></code> directory and <code class="docutils literal notranslate"><span class="pre">cd</span></code> into it. E.g.,
 on a Unix-like system:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /path/to/pygmo
-<span class="gp">$</span> mkdir build
-<span class="gp">$</span> <span class="nb">cd</span> build
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/path/to/pygmo
+<span class="gp">$ </span>mkdir<span class="w"> </span>build
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>build
 </pre></div>
 </div>
 <p>Once you are in the <code class="docutils literal notranslate"><span class="pre">build</span></code> directory, you must configure your build
@@ -328,147 +540,160 @@ such as:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code>: the build type (<code class="docutils literal notranslate"><span class="pre">Release</span></code>, <code class="docutils literal notranslate"><span class="pre">Debug</span></code>, etc.),
 defaults to <code class="docutils literal notranslate"><span class="pre">Release</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code>: the path into which pygmo will be installed
-(e.g., this defaults to <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code> on Unix-like platforms).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code>: additional paths that will be searched by CMake
 when looking for dependencies.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PYGMO_INSTALL_PATH</span></code>: the path into which the pygmo module
+will be installed. If left empty (the default), pygmo will be installed
+in the global modules directory of your Python installation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PYGMO_ENABLE_IPO</span></code>: set this flag to <code class="docutils literal notranslate"><span class="pre">ON</span></code> to compile pygmo
+with link-time optimisations. Requires compiler support,
+defaults to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>.</p></li>
 </ul>
 <p>Please consult <a class="reference external" href="https://cmake.org/cmake/help/latest/">CMake’s documentation</a>
 for more details about CMake’s variables and options.</p>
-<p>A critical setting for a pygmo installation is the
-value of the <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> variable. The pygmo
-build system will attempt to construct an appropriate
-installation path for the Python module by combining
-the value of <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> with the directory
-paths of the Python installation in use in a platform-dependent
-manner.</p>
-<p>For instance, on a typical Linux installation
-of Python 3.6,
-<code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> will be set by default to
-<code class="docutils literal notranslate"><span class="pre">/usr/local</span></code>, and the pygmo build system will
-append <code class="docutils literal notranslate"><span class="pre">lib/python3.6/site-packages</span></code> to the install prefix.
-Thus, the overall install path for the pygmo module will be
-<code class="docutils literal notranslate"><span class="pre">/usr/local/lib/python3.6/site-packages</span></code>. If you want
-to avoid system-wide installations (which require root
-privileges), on Unix-like system it is possible to set
-the <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> variable to the directory
-<code class="docutils literal notranslate"><span class="pre">.local</span></code> in your <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">/home/username/.local</span></code>).
-The pygmo install path will then be, in this case,
-<code class="docutils literal notranslate"><span class="pre">/home/username/.local/lib/python3.6/site-packages</span></code>,
-a path which is normally recognised by Python installations
-without the need to modify the <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> variable.
-If you install pygmo in non-standard prefixes, you may
-have to tweak your Python installation in order for the
-Python interpreter to find the pygmo module.</p>
-<p>A typical CMake invocation for pygmo may then
-look something like this:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> cmake ../ -DCMAKE_INSTALL_PREFIX<span class="o">=</span>~/.local
-</pre></div>
-</div>
-<p>That is, we will be installing pygmo into our home
-directory into the <code class="docutils literal notranslate"><span class="pre">.local</span></code>
-subdirectory. If CMake runs without errors, we can then proceed to actually
+<p>The <code class="docutils literal notranslate"><span class="pre">PYGMO_INSTALL_PATH</span></code> option is particularly important. If you
+want to install pygmo locally instead of globally (which is in general
+a good idea), you can set this variable to the output of
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">site</span> <span class="pre">--user-site</span></code>.</p>
+<p>After configuring the build with CMake, we can then proceed to actually
 building pygmo:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> cmake --build .
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cmake<span class="w"> </span>--build<span class="w"> </span>.
 </pre></div>
 </div>
 <p>Finally, we can install pygmo with the command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> cmake  --build . --target install
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cmake<span class="w">  </span>--build<span class="w"> </span>.<span class="w"> </span>--target<span class="w"> </span>install
 </pre></div>
 </div>
-</div>
-<div class="section" id="verifying-the-installation">
-<h2>Verifying the installation<a class="headerlink" href="#verifying-the-installation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="verifying-the-installation">
+<h2>Verifying the installation<a class="headerlink" href="#verifying-the-installation" title="Permalink to this headline">#</a></h2>
 <p>You can verify that pygmo was successfully compiled and
 installed by running the test suite. From a
 Python session, run the following commands:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pygmo</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pygmo</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pygmo</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">run_test_suite</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>If these commands execute without any error, then
 your pygmo installation is ready for use.</p>
-</div>
-<div class="section" id="getting-help">
-<h2>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="getting-help">
+<h2>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this headline">#</a></h2>
 <p>If you run into troubles installing pygmo, please do not hesitate
 to contact us either through our <a class="reference external" href="https://gitter.im/pagmo2/Lobby">gitter channel</a>
 or by opening an issue report on <a class="reference external" href="https://github.com/esa/pygmo2/issues">github</a>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
-           </div>
-           <div class="articleComments">
-            
-           </div>
-          </div>
-          <footer>
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="overview.html" class="btn btn-neutral float-right" title="Capabilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="index.html" class="btn btn-neutral" title="pygmo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2020, pagmo development team.
-
-    </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-
-        </div>
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">pygmo</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Capabilities</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
 
-    </section>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencies">Dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packages">Packages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda">Conda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip">pip</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arch-linux">Arch Linux</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-from-source">Installation from source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifying-the-installation">Verifying the installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help">Getting help</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By pagmo development team
+</p>
 
   </div>
   
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021, pagmo development team.
+      <br/>
+    
+  </p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
 
+      </main>
+    </div>
+  </div>
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'2.14.0',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/language_data.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
-      });
-  </script>
-   
-
-</body>
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>

@@ -1,0 +1,596 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Benchmarking Nondominated Sorting Particle Swarm Optimizer (NSPSO) on ZDT1 and ZDT2 problems &#8212; pygmo 2.19.8 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/nspso_tutorial_zdt1_2';</script>
+    <link rel="shortcut icon" href="../_static/logo_favico.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API reference" href="../api_reference.html" />
+    <link rel="prev" title="Benchmarking Multi-Objective Hypervolume-based Ant Colony Optimization on ZDT3 problem" href="zdt3_maco_benchmark.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">pygmo 2.19.8 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Capabilities</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="tutorials.html">Tutorials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="using_problem.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">problem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_algorithm.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">algorithm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_population.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_island.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_archipelago.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="evolving_a_population.html">Evolving a population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_simple.html">Coding a simple User Defined Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_constrained.html">Coding a User Defined Problem with constraints (NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_minlp.html">Coding a User Defined Problem with an integer part (MINLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_multi_objective.html">Coding a User Defined Problem with multiple objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="udp_meta_decorator.html">Using the decorator meta-problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udi.html">Coding a User Defined Island</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nlopt_basics.html">A first tutorial on the use of NLopt solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moo.html">Basic Multi-Objective Functionalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moo_moead.html">Using pygmo’s <code class="xref py py-class docutils literal notranslate"><span class="pre">moead</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume.html">Getting started with hypervolumes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume_advanced.html">Advanced hypervolume computation and analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume_approx.html">Approximating the hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cec2006_gaco_benchmark.html">Benchmarking Extended Ant Colony Optimization on CEC2006 problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cec2013_comp.html">Participating to the CEC2013 Competition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solving_schwefel_20.html">Solving the 20 dimensional Schwefel problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmaes_vs_xnes.html">Comparing algorithms: the case of xNES and CMA-ES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zdt3_maco_benchmark.html">Benchmarking Multi-Objective Hypervolume-based Ant Colony Optimization on ZDT3 problem</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Benchmarking Nondominated Sorting Particle Swarm Optimizer (NSPSO) on ZDT1 and ZDT2 problems</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api_reference.html">API reference</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm.html">Algorithm class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html">Problem class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../population.html">Population class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../island.html">Island class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../archipelago.html">Archipelago class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bfe.html">Batch fitness evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_policy.html">Replacement policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../s_policy.html">Selection policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html">Miscellanea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problems.html">List of problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">List of algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../islands.html">List of islands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bfes.html">List of batch evaluators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topologies.html">List of topologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_policies.html">List of replacement policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../s_policies.html">List of selection policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generic_utils.html">Generic optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mo_utils.html">Multi-objective optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../con_utils.html">Constrained optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gh_utils.html">Gradient and Hessians utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hv_utils.html">Hypervolume utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../genetic_op_utils.html">Generic optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting.html">Plotting utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../known_issues.html">Known issues</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/esa/pygmo2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/esa/pygmo2/issues/new?title=Issue%20on%20page%20%2Ftutorials/nspso_tutorial_zdt1_2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tutorials/nspso_tutorial_zdt1_2.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Benchmarking Nondominated Sorting Particle Swarm Optimizer (NSPSO) on ZDT1 and ZDT2 problems</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="benchmarking-nondominated-sorting-particle-swarm-optimizer-nspso-on-zdt1-and-zdt2-problems">
+<span id="py-tutorial-nspso-tutorial-zd1-2"></span><h1>Benchmarking Nondominated Sorting Particle Swarm Optimizer (NSPSO) on ZDT1 and ZDT2 problems<a class="headerlink" href="#benchmarking-nondominated-sorting-particle-swarm-optimizer-nspso-on-zdt1-and-zdt2-problems" title="Permalink to this headline">#</a></h1>
+<p>In this tutorial we will benchmark the NSPSO algorithm, which can be found in the pygmo class <a class="reference internal" href="../algorithms.html#pygmo.nspso" title="pygmo.nspso"><code class="xref py py-class docutils literal notranslate"><span class="pre">nspso</span></code></a>, on the first two problems of the Zitzler, Deb and Thiele (ZDT) test problem suite (i.e., ZDT1 and ZDT2).</p>
+<p>In particular, in an attempt of reproducing a similar strategy as the one proposed in the original paper where NSPSO was introduced (i.e., “A Non-dominated Sorting Particle Swarm Optimizer for Multiobjective Optimization” by Xiadong Li), we check the values of two performance metrics for three different algorithms (i.e., NSPSO with crowding distance, NSPSO with niche count and NSGA-II) on ZDT1 and ZDT2. In particular, while in the original paper the Delta and the GD metrics were used, in this case we use the average of the crowding distance as diversity metric and the p-distance as convergence metric. Both these metrics are already available for the use in pagmo.</p>
+<p>The crowding distance can be computed in any population set, by simply calling the class <a class="reference internal" href="../mo_utils.html#pygmo.crowding_distance" title="pygmo.crowding_distance"><code class="xref py py-class docutils literal notranslate"><span class="pre">crowding_distance</span></code></a>, giving as input the relevant population where the crowding distance wants to be computed for the non dominated front. On the other hand, the p-distance value is only available for the ZDT and DTLZ test suites and it can be retrieved by calling the <em>p_distance</em> method of the <a class="reference internal" href="../problems.html#pygmo.zdt" title="pygmo.zdt"><code class="xref py py-class docutils literal notranslate"><span class="pre">zdt</span></code></a> class, passing as input the population set.</p>
+<p>Both ZDT1 and ZDT2 problems are box-constrained continuous bi-objectives problem and are provided as UDP (user-defined problem) by pygmo in the <a class="reference internal" href="../problems.html#pygmo.zdt" title="pygmo.zdt"><code class="xref py py-class docutils literal notranslate"><span class="pre">zdt</span></code></a> class.
+For benchmarking the aforesaid algorithms, we will use the same input parameters suggested in the original paper. Thus, for the two NSPSO algorithms, we will use the same set of input parameters, but using two different diversity strategies (i.e., crowding distance and niche count). In the first case, we will thus have: <em>algo = algorithm(nspso(gen = 100, omega=0.001, c1 = 2.0, c2 = 2.0, chi = 1.0, v_coeff = 0.5, leader_selection_range = 100, diversity_mechanism = ‘crowding distance’, memory = False, seed = 20))</em>, whereas in the second: <em>algo = algorithm(nspso(gen = 100, omega=0.001, c1 = 2.0, c2 = 2.0, chi = 1.0, v_coeff = 0.5, leader_selection_range = 100, diversity_mechanism = ‘niche count’, memory = False, seed = 20))</em>. Similarly, for NSGA-II, we will also use the same input parameters also recommended in the original paper: <em>algo_3 = algorithm(nsga2(gen = 100, cr=0.9, m=1/30, eta_c=20, eta_m=20, seed = 20))</em>.
+Furthermore, the same population and generation sizes will be chosen: 200 and 100, respectively.</p>
+<p>It has to be noted that our purpose is not to exactly reproduce the original paper’s results: indeed, pagmo’s version of NSPSO is slightly different. First of all, the inertia weight parameter (i.e., <em>omega</em>) is not varied dynamically, but the user can decide to implement a schedule and vary it on a generation by generation basis. Indeed, thanks to the <em>memory</em> parameter, NSPSO can be called either in one single call or iteratively in a for loop, by maintaining the same results. This allows the users to access the algorithm’s population generation by generation and to possibly change the input parameters. Secondly, in pagmo we have introduced the leader selection range parameter (i.e., <em>leader_selection_range</em>), which was not present in the original implementation.</p>
+<p>Each of the UDAs is run ten times on each problem and the results are eventually averaged and shown in terms of mean and standard deviation. The following piece of code is used for performing the benchmark:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pygmo</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pygmo</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop_size</span><span class="o">=</span><span class="mi">200</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">problems</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#We declare empty arrays for storing the p-distance and mean crowding distance values for all</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#the algorithms and problems over 10 runs:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#p-distance</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p_dist_nspso_cd_zdt1</span><span class="o">=</span><span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p_dist_nspso_cd_zdt2</span><span class="o">=</span><span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p_dist_nspso_nc_zdt1</span><span class="o">=</span><span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p_dist_nspso_nc_zdt2</span><span class="o">=</span><span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p_dist_nsga2_zdt1</span><span class="o">=</span><span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p_dist_nsga2_zdt2</span><span class="o">=</span><span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#crowding distance</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean_cd_nspso_cd_zdt1</span><span class="o">=</span><span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean_cd_nspso_cd_zdt2</span><span class="o">=</span><span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean_cd_nspso_nc_zdt1</span><span class="o">=</span><span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean_cd_nspso_nc_zdt2</span><span class="o">=</span><span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean_cd_nsga2_zdt1</span><span class="o">=</span><span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean_cd_nsga2_zdt2</span><span class="o">=</span><span class="p">[]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We run the algos ten times each, and we store p-distance and crowding distance</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">problems</span><span class="p">:</span> 
+<span class="gp">... </span>      <span class="c1"># 1. We declare the problem (either ZDT1 or ZDT2):</span>
+<span class="gp">... </span>      <span class="k">if</span> <span class="n">j</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+<span class="gp">... </span>          <span class="n">udp</span><span class="o">=</span><span class="n">zdt</span><span class="p">(</span><span class="n">prob_id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>      <span class="k">elif</span> <span class="n">j</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+<span class="gp">... </span>          <span class="n">udp</span><span class="o">=</span><span class="n">zdt</span><span class="p">(</span><span class="n">prob_id</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>      <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+<span class="gp">... </span>            <span class="c1"># 2. We declare the three populations to be evolved:</span>
+<span class="gp">... </span>            <span class="n">pop_1</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span> <span class="o">=</span> <span class="n">udp</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">pop_size</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="n">ii</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">... </span>            <span class="n">pop_2</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span> <span class="o">=</span> <span class="n">udp</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">pop_size</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="n">ii</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">... </span>            <span class="n">pop_3</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">prob</span> <span class="o">=</span> <span class="n">udp</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">pop_size</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="n">ii</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">... </span>            <span class="c1"># 3. We declare the algorithms to be used: NSPSO with crowding distance, NSPSO with niche count and NSGA-II:</span>
+<span class="gp">... </span>            <span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="p">(</span><span class="n">nspso</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">omega</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">c1</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">chi</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">v_coeff</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">leader_selection_range</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">diversity_mechanism</span> <span class="o">=</span> <span class="s1">&#39;crowding distance&#39;</span><span class="p">,</span> <span class="n">memory</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="mi">20</span><span class="p">))</span>
+<span class="gp">... </span>            <span class="n">algo_2</span> <span class="o">=</span> <span class="n">algorithm</span><span class="p">(</span><span class="n">nspso</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">omega</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">c1</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">chi</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">v_coeff</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">leader_selection_range</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">diversity_mechanism</span> <span class="o">=</span> <span class="s1">&#39;niche count&#39;</span><span class="p">,</span> <span class="n">memory</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="mi">20</span><span class="p">))</span>
+<span class="gp">... </span>            <span class="n">algo_3</span> <span class="o">=</span> <span class="n">algorithm</span><span class="p">(</span><span class="n">nsga2</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">cr</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">30</span><span class="p">,</span> <span class="n">eta_c</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">eta_m</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="mi">20</span><span class="p">))</span>
+<span class="gp">... </span>            <span class="c1"># 4. We evolve the populations for the three algorithms:</span>
+<span class="gp">... </span>            <span class="n">pop_1</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop_1</span><span class="p">)</span>
+<span class="gp">... </span>            <span class="n">pop_2</span> <span class="o">=</span> <span class="n">algo_2</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop_2</span><span class="p">)</span>
+<span class="gp">... </span>            <span class="n">pop_3</span> <span class="o">=</span> <span class="n">algo_3</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop_3</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>            <span class="c1">#This returns the first (i.e., best) non-dominated front:</span>
+<span class="gp">... </span>            <span class="n">nds_nspso_cd</span> <span class="o">=</span> <span class="n">non_dominated_front_2d</span><span class="p">(</span><span class="n">pop_1</span><span class="o">.</span><span class="n">get_f</span><span class="p">())</span>
+<span class="gp">... </span>            <span class="n">nds_nspso_nc</span> <span class="o">=</span> <span class="n">non_dominated_front_2d</span><span class="p">(</span><span class="n">pop_2</span><span class="o">.</span><span class="n">get_f</span><span class="p">())</span>
+<span class="gp">... </span>            <span class="n">nds_nsga2</span>    <span class="o">=</span> <span class="n">non_dominated_front_2d</span><span class="p">(</span><span class="n">pop_3</span><span class="o">.</span><span class="n">get_f</span><span class="p">())</span>
+<span class="gp">...</span>
+<span class="gp">... </span>            <span class="c1">#We store all the non-dominated fronts crowding distances, for all the algorithms:</span>
+<span class="gp">... </span>            <span class="n">cd_nspso_cd</span>  <span class="o">=</span> <span class="n">crowding_distance</span><span class="p">(</span><span class="n">pop_1</span><span class="o">.</span><span class="n">get_f</span><span class="p">()[</span><span class="n">nds_nspso_cd</span><span class="p">])</span>
+<span class="gp">... </span>            <span class="n">cd_nspso_nc</span>  <span class="o">=</span> <span class="n">crowding_distance</span><span class="p">(</span><span class="n">pop_2</span><span class="o">.</span><span class="n">get_f</span><span class="p">()[</span><span class="n">nds_nspso_nc</span><span class="p">])</span>
+<span class="gp">... </span>            <span class="n">cd_nsga2</span>     <span class="o">=</span> <span class="n">crowding_distance</span><span class="p">(</span><span class="n">pop_3</span><span class="o">.</span><span class="n">get_f</span><span class="p">()[</span><span class="n">nds_nsga2</span><span class="p">])</span>
+<span class="gp">...</span>
+<span class="gp">... </span>            <span class="c1"># 5. We compute the p-dist and store it in a vector, for each problem and each algorithm:</span>
+<span class="gp">... </span>            <span class="k">if</span> <span class="n">j</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="c1">#ZDT1</span>
+<span class="gp">... </span>                <span class="c1">#We gather the crowding distance means:</span>
+<span class="gp">... </span>                <span class="n">mean_cd_nspso_cd_zdt1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cd_nspso_cd</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">cd_nspso_cd</span><span class="p">)]))</span>
+<span class="gp">... </span>                <span class="n">mean_cd_nspso_nc_zdt1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cd_nspso_cd</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">cd_nspso_cd</span><span class="p">)]))</span>
+<span class="gp">... </span>                <span class="n">mean_cd_nsga2_zdt1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cd_nsga2</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">cd_nsga2</span><span class="p">)]))</span>
+<span class="gp">... </span>                <span class="c1">#And the p-distance values:</span>
+<span class="gp">... </span>                <span class="n">p_dist_nspso_cd_zdt1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">udp</span><span class="o">.</span><span class="n">p_distance</span><span class="p">(</span><span class="n">pop_1</span><span class="p">))</span>
+<span class="gp">... </span>                <span class="n">p_dist_nspso_nc_zdt1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">udp</span><span class="o">.</span><span class="n">p_distance</span><span class="p">(</span><span class="n">pop_2</span><span class="p">))</span>
+<span class="gp">... </span>                <span class="n">p_dist_nsga2_zdt1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">udp</span><span class="o">.</span><span class="n">p_distance</span><span class="p">(</span><span class="n">pop_3</span><span class="p">))</span>
+<span class="gp">... </span>            <span class="k">elif</span> <span class="n">j</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span> <span class="c1">#ZDT2</span>
+<span class="gp">... </span>                <span class="c1">#We gather the crowding distance means:</span>
+<span class="gp">... </span>                <span class="n">mean_cd_nspso_cd_zdt2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cd_nspso_cd</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">cd_nspso_cd</span><span class="p">)]))</span>
+<span class="gp">... </span>                <span class="n">mean_cd_nspso_nc_zdt2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cd_nspso_cd</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">cd_nspso_cd</span><span class="p">)]))</span>
+<span class="gp">... </span>                <span class="n">mean_cd_nsga2_zdt2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cd_nsga2</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">cd_nsga2</span><span class="p">)]))</span>
+<span class="gp">... </span>                <span class="c1">#And the p-distance values:</span>
+<span class="gp">... </span>                <span class="n">p_dist_nspso_cd_zdt2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">udp</span><span class="o">.</span><span class="n">p_distance</span><span class="p">(</span><span class="n">pop_1</span><span class="p">))</span>
+<span class="gp">... </span>                <span class="n">p_dist_nspso_nc_zdt2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">udp</span><span class="o">.</span><span class="n">p_distance</span><span class="p">(</span><span class="n">pop_2</span><span class="p">))</span>
+<span class="gp">... </span>                <span class="n">p_dist_nsga2_zdt2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">udp</span><span class="o">.</span><span class="n">p_distance</span><span class="p">(</span><span class="n">pop_3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Once that we have run the three algorithms on the ZDT1 and ZDT3 problems, by storing all the crowding distances and p-distances values, we can show the results:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># 6. We print the results:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> NSPSO with crowding distance:&quot;</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ZDT1-&gt; p-distance mean and std: </span><span class="si">%(mean)f</span><span class="s2"> +/- </span><span class="si">%(std)f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">p_dist_nspso_cd_zdt1</span><span class="p">),</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">p_dist_nspso_cd_zdt1</span><span class="p">)})</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ZDT2-&gt; p-distance mean and std: </span><span class="si">%(mean)f</span><span class="s2"> +/- </span><span class="si">%(std)f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">p_dist_nspso_cd_zdt2</span><span class="p">),</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">p_dist_nspso_cd_zdt2</span><span class="p">)})</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ZDT1-&gt; crowding distance mean and std: </span><span class="si">%(mean)f</span><span class="s2"> +/- </span><span class="si">%(std)f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">mean_cd_nspso_cd_zdt1</span><span class="p">),</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">mean_cd_nspso_cd_zdt1</span><span class="p">)})</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ZDT2-&gt; crowding distance mean and std: </span><span class="si">%(mean)f</span><span class="s2"> +/- </span><span class="si">%(std)f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">mean_cd_nspso_cd_zdt2</span><span class="p">),</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">mean_cd_nspso_cd_zdt2</span><span class="p">)})</span> 
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> NSPSO with niche count:&quot;</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ZDT1-&gt; p-distance mean and std: </span><span class="si">%(mean)f</span><span class="s2"> +/- </span><span class="si">%(std)f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">p_dist_nspso_nc_zdt1</span><span class="p">),</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">p_dist_nspso_nc_zdt1</span><span class="p">)})</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ZDT2-&gt; p-distance mean and std: </span><span class="si">%(mean)f</span><span class="s2"> +/- </span><span class="si">%(std)f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">p_dist_nspso_nc_zdt2</span><span class="p">),</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">p_dist_nspso_nc_zdt2</span><span class="p">)})</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ZDT1-&gt; crowding distance mean and std: </span><span class="si">%(mean)f</span><span class="s2"> +/- </span><span class="si">%(std)f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">mean_cd_nspso_cd_zdt1</span><span class="p">),</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">mean_cd_nspso_cd_zdt1</span><span class="p">)})</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ZDT2-&gt; crowding distance mean and std: </span><span class="si">%(mean)f</span><span class="s2"> +/- </span><span class="si">%(std)f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">mean_cd_nspso_cd_zdt2</span><span class="p">),</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">mean_cd_nspso_cd_zdt2</span><span class="p">)})</span> 
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> NSGA2:&quot;</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ZDT1-&gt; p-distance mean and std: </span><span class="si">%(mean)f</span><span class="s2"> +/- </span><span class="si">%(std)f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">p_dist_nsga2_zdt1</span><span class="p">),</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">p_dist_nsga2_zdt1</span><span class="p">)})</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ZDT2-&gt; p-distance mean and std: </span><span class="si">%(mean)f</span><span class="s2"> +/- </span><span class="si">%(std)f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">p_dist_nsga2_zdt2</span><span class="p">),</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">p_dist_nsga2_zdt2</span><span class="p">)})</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ZDT1-&gt; crowding distance mean and std: </span><span class="si">%(mean)f</span><span class="s2"> +/- </span><span class="si">%(std)f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">mean_cd_nsga2_zdt1</span><span class="p">),</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">mean_cd_nsga2_zdt1</span><span class="p">)})</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ZDT2-&gt; crowding distance mean and std: </span><span class="si">%(mean)f</span><span class="s2"> +/- </span><span class="si">%(std)f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">mean_cd_nsga2_zdt2</span><span class="p">),</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">mean_cd_nsga2_zdt2</span><span class="p">)})</span> 
+<span class="go"> NSPSO with crowding distance:</span>
+<span class="go"> ZDT1-&gt; p-distance mean and std: 0.054309 +/- 0.028563</span>
+<span class="go"> ZDT2-&gt; p-distance mean and std: 0.020207 +/- 0.016466</span>
+<span class="go"> ZDT1-&gt; crowding distance mean and std: 0.020099 +/- 0.000038</span>
+<span class="go"> ZDT2-&gt; crowding distance mean and std: 0.020065 +/- 0.000102</span>
+
+<span class="go"> NSPSO with niche count:</span>
+<span class="go"> ZDT1-&gt; p-distance mean and std: 0.054797 +/- 0.016863</span>
+<span class="go"> ZDT2-&gt; p-distance mean and std: 0.011945 +/- 0.010522</span>
+<span class="go"> ZDT1-&gt; crowding distance mean and std: 0.049834 +/- 0.009898</span>
+<span class="go"> ZDT2-&gt; crowding distance mean and std: 0.044450 +/- 0.010312</span>
+
+<span class="go"> NSGA2:</span>
+<span class="go"> ZDT1-&gt; p-distance mean and std: 0.011525 +/- 0.001534</span>
+<span class="go"> ZDT2-&gt; p-distance mean and std: 0.009290 +/- 0.001335</span>
+<span class="go"> ZDT1-&gt; crowding distance mean and std: 0.020099 +/- 0.000038</span>
+<span class="go"> ZDT2-&gt; crowding distance mean and std: 0.020065 +/- 0.000102</span>
+</pre></div>
+</div>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="zdt3_maco_benchmark.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Benchmarking Multi-Objective Hypervolume-based Ant Colony Optimization on ZDT3 problem</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../api_reference.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">API reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By pagmo development team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021, pagmo development team.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

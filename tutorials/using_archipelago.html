@@ -1,0 +1,712 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Use of the class archipelago &#8212; pygmo 2.19.8 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/using_archipelago';</script>
+    <link rel="shortcut icon" href="../_static/logo_favico.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Evolving a population" href="evolving_a_population.html" />
+    <link rel="prev" title="Use of the class island" href="using_island.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">pygmo 2.19.8 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Capabilities</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="tutorials.html">Tutorials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="using_problem.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">problem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_algorithm.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">algorithm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_population.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_island.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="evolving_a_population.html">Evolving a population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_simple.html">Coding a simple User Defined Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_constrained.html">Coding a User Defined Problem with constraints (NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_minlp.html">Coding a User Defined Problem with an integer part (MINLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_multi_objective.html">Coding a User Defined Problem with multiple objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="udp_meta_decorator.html">Using the decorator meta-problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udi.html">Coding a User Defined Island</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nlopt_basics.html">A first tutorial on the use of NLopt solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moo.html">Basic Multi-Objective Functionalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moo_moead.html">Using pygmo’s <code class="xref py py-class docutils literal notranslate"><span class="pre">moead</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume.html">Getting started with hypervolumes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume_advanced.html">Advanced hypervolume computation and analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume_approx.html">Approximating the hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cec2006_gaco_benchmark.html">Benchmarking Extended Ant Colony Optimization on CEC2006 problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cec2013_comp.html">Participating to the CEC2013 Competition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solving_schwefel_20.html">Solving the 20 dimensional Schwefel problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmaes_vs_xnes.html">Comparing algorithms: the case of xNES and CMA-ES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zdt3_maco_benchmark.html">Benchmarking Multi-Objective Hypervolume-based Ant Colony Optimization on ZDT3 problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nspso_tutorial_zdt1_2.html">Benchmarking Nondominated Sorting Particle Swarm Optimizer (NSPSO) on ZDT1 and ZDT2 problems</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api_reference.html">API reference</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm.html">Algorithm class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html">Problem class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../population.html">Population class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../island.html">Island class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../archipelago.html">Archipelago class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bfe.html">Batch fitness evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_policy.html">Replacement policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../s_policy.html">Selection policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html">Miscellanea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problems.html">List of problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">List of algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../islands.html">List of islands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bfes.html">List of batch evaluators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topologies.html">List of topologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_policies.html">List of replacement policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../s_policies.html">List of selection policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generic_utils.html">Generic optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mo_utils.html">Multi-objective optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../con_utils.html">Constrained optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gh_utils.html">Gradient and Hessians utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hv_utils.html">Hypervolume utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../genetic_op_utils.html">Generic optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting.html">Plotting utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../known_issues.html">Known issues</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/esa/pygmo2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/esa/pygmo2/issues/new?title=Issue%20on%20page%20%2Ftutorials/using_archipelago.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tutorials/using_archipelago.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Use of the class archipelago</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-exceptions">Managing exceptions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="use-of-the-class-archipelago">
+<span id="py-tutorial-using-archipelago"></span><h1>Use of the class <a class="reference internal" href="../archipelago.html#pygmo.archipelago" title="pygmo.archipelago"><code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a><a class="headerlink" href="#use-of-the-class-archipelago" title="Permalink to this headline">#</a></h1>
+<img alt="../_images/archi_no_text.png" src="../_images/archi_no_text.png" />
+<p>The <a class="reference internal" href="../archipelago.html#pygmo.archipelago" title="pygmo.archipelago"><code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a> class is the main parallelization engine of pygmo. It essentially is
+a container of <a class="reference internal" href="../island.html#pygmo.island" title="pygmo.island"><code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a> able to initiate evolution (optimization tasks) in each <a class="reference internal" href="../island.html#pygmo.island" title="pygmo.island"><code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a>
+asynchronously while keeping track of the results and of the information exchange (migration) between the tasks (via the
+generalized island model). The various <a class="reference internal" href="../island.html#pygmo.island" title="pygmo.island"><code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a> in an <a class="reference internal" href="../archipelago.html#pygmo.archipelago" title="pygmo.archipelago"><code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a> can be heterogeneous
+and refer to different UDAs, UDPs and UDIs.</p>
+<p>In this tutorial we will show how to use an <a class="reference internal" href="../archipelago.html#pygmo.archipelago" title="pygmo.archipelago"><code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a> to run in parallel several
+optimization tasks defined in a UDP. So let us start defining our UDP. We will here define a single objective
+problem with one equality and one inequality constraint. The problem in itself is not important for the
+purpose of this tutorial. Its mathematical definition is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{ll}
+  \mbox{minimize: } &amp; \sum_i x_i \\
+  \mbox{subject to:} &amp; -1 \le x_i \le 1, i = 1..n \\
+                     &amp; \sum_i x_i^2 = 1 \\
+                     &amp; \sum_i x_i \ge 0 \\
+\end{array}\end{split}\]</div>
+<p>and the optimal value for the objective function is 0. We can write the above problem as a pygmo UDP (see:
+<a class="reference internal" href="coding_udp_simple.html#py-tutorial-coding-udp-simple"><span class="std std-ref">Coding a simple User Defined Problem</span></a> and <a class="reference internal" href="coding_udp_constrained.html#py-tutorial-coding-udp-constrained"><span class="std std-ref">Coding a User Defined Problem with constraints (NLP)</span></a> to learn how UDPs are
+defined from Python)</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">toy_problem</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">fitness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">1</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">gradient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="n">pg</span><span class="o">.</span><span class="n">estimate_gradient</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">fitness</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span> <span class="c1"># numerical gradient</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_nec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="mi">1</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_nic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="mi">1</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s2">&quot;A toy problem&quot;</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_extra_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Dimensions: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, without further ado, lets use the full power of pygmo and prepare to be shocked:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pygmo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a_cstrs_sa</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">algorithm</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">cstrs_self_adaptive</span><span class="p">(</span><span class="n">iters</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p_toy</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">problem</span><span class="p">(</span><span class="n">toy_problem</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p_toy</span><span class="o">.</span><span class="n">c_tol</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archi</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">archipelago</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">algo</span><span class="o">=</span><span class="n">a_cstrs_sa</span><span class="p">,</span> <span class="n">prob</span><span class="o">=</span><span class="n">p_toy</span><span class="p">,</span> <span class="n">pop_size</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">archi</span><span class="p">)</span> 
+<span class="go">Number of islands: 32</span>
+<span class="go">Status: idle</span>
+
+<span class="go">Islands summaries:</span>
+
+<span class="go">    #  Type                    Algo                                Prob           Size  Status</span>
+<span class="go">    --------------------------------------------------------------------------------------------</span>
+<span class="go">    0  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    idle</span>
+<span class="go">    1  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    idle</span>
+<span class="go">    2  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    idle</span>
+<span class="go">    3  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    idle</span>
+<span class="go">    4  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    idle</span>
+<span class="go">    5  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    idle</span>
+<span class="go">    6  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    idle</span>
+<span class="go">    7  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    idle</span>
+<span class="go">    ...</span>
+</pre></div>
+</div>
+<p>To instantiate the <a class="reference internal" href="../archipelago.html#pygmo.archipelago" title="pygmo.archipelago"><code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a> we have used the constructor from a <code class="docutils literal notranslate"><span class="pre">problem</span></code> and <code class="docutils literal notranslate"><span class="pre">algorithm</span></code>.
+This leaves to the <code class="docutils literal notranslate"><span class="pre">archi</span></code> object the task of building the various populations and islands. To do so, several
+choices are made for the user, starting with the island type. In this case, as seen from the screen
+printout of the <code class="docutils literal notranslate"><span class="pre">archi</span></code> object, Multiprocessing islands are being used. To control what islands will
+assemble an archipelago, the user can instantiate an empty archipelago and use the
+<a class="reference internal" href="../archipelago.html#pygmo.archipelago.push_back" title="pygmo.archipelago.push_back"><code class="xref py py-func docutils literal notranslate"><span class="pre">pygmo.archipelago.push_back()</span></code></a> method to insert one by one all the islands.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The island type selected by the <a class="reference internal" href="../archipelago.html#pygmo.archipelago" title="pygmo.archipelago"><code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a> constructor is, in this case, the
+<code class="docutils literal notranslate"><span class="pre">multiprocessing</span> <span class="pre">island</span></code>, (<a class="reference internal" href="../islands.html#pygmo.mp_island" title="pygmo.mp_island"><code class="xref py py-class docutils literal notranslate"><span class="pre">pygmo.mp_island</span></code></a>) as we run this example on py36 and
+a linux machine. In general, the exact island chosen is platform, population and algorithm
+dependent and such choice is described in the docs of the <a class="reference internal" href="../island.html#pygmo.island" title="pygmo.island"><code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a> class constructor.</p>
+</div>
+<p>After inspection, let us now run the evolution.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">archi</span><span class="o">.</span><span class="n">get_champions_f</span><span class="p">()</span> 
+<span class="go">[array([  2.18826798, -26.60899368,  -2.18826798]),</span>
+<span class="go">array([  3.39497588, -24.48739141,  -3.39497588]),</span>
+<span class="go">array([  2.3240917 , -26.88225527,  -2.3240917 ]),</span>
+<span class="go">array([  0.13134093, -28.47299705,  -0.13134093]),</span>
+<span class="go">array([  6.53062434, -24.98724057,  -6.53062434]),</span>
+<span class="go">array([  1.02894159, -25.69765425,  -1.02894159]),</span>
+<span class="go">array([  4.07802374, -23.82020921,  -4.07802374]),</span>
+<span class="go">array([  1.71396489, -25.90794514,  -1.71396489]),</span>
+<span class="go">...]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archi</span><span class="o">.</span><span class="n">evolve</span><span class="p">()</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">archi</span><span class="p">)</span> 
+<span class="go">Number of islands: 32</span>
+<span class="go">Status: busy</span>
+
+<span class="go">Islands summaries:</span>
+
+<span class="go">    #  Type                    Algo                                Prob           Size  Status</span>
+<span class="go">    --------------------------------------------------------------------------------------------</span>
+<span class="go">    0  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    busy</span>
+<span class="go">    1  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    busy</span>
+<span class="go">    2  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    busy</span>
+<span class="go">    3  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    busy</span>
+<span class="go">    4  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    busy</span>
+<span class="go">    5  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    busy</span>
+<span class="go">    6  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    busy</span>
+<span class="go">    7  Multiprocessing island  Self-adaptive constraints handling  A toy problem  70    busy</span>
+<span class="go">    ...</span>
+</pre></div>
+</div>
+<p>Note how the evolution is happening in parallel on 32 separate threads (each one spawning a process, in this case, as a multiprocessing island is used).
+The evolution happens asynchronously and thus does not interfere directly with our main process. We then have to call the <a class="reference internal" href="../archipelago.html#pygmo.archipelago.wait" title="pygmo.archipelago.wait"><code class="xref py py-func docutils literal notranslate"><span class="pre">pygmo.archipelago.wait()</span></code></a>
+method to have the main process explicitly wait for all islands to be finished.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">archi</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archi</span><span class="o">.</span><span class="n">get_champions_f</span><span class="p">()</span> 
+<span class="go">[array([  1.16514064e-02,   4.03450637e-05,  -1.16514064e-02]),</span>
+<span class="go">array([ 0.02249111,  0.00392739, -0.02249111]),</span>
+<span class="go">array([  6.09564060e-03,  -4.93961313e-05,  -6.09564060e-03]),</span>
+<span class="go">array([ 0.01161224, -0.00815189, -0.01161224]),</span>
+<span class="go">array([ -1.90431378e-05,   7.65501702e-05,   1.90431378e-05]),</span>
+<span class="go">array([ -5.45044897e-05,   5.70199057e-05,   5.45044897e-05]),</span>
+<span class="go">array([ 0.00541601, -0.08208163, -0.00541601]),</span>
+<span class="go">array([ -6.95677113e-05,  -7.42268924e-05,   6.95677113e-05]),</span>
+<span class="go">array([ 0.00335729,  0.00684969, -0.00335729]),</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>Different islands produce different results, in this case, as the various populations and algorithms where
+constructed using random seeds.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The use of the UDA <a class="reference internal" href="../algorithms.html#pygmo.cstrs_self_adaptive" title="pygmo.cstrs_self_adaptive"><code class="xref py py-class docutils literal notranslate"><span class="pre">cstrs_self_adaptive</span></code></a> is here only chosen to keep the various threads occupied,
+most likely other local algorithm would, in this case, be a superior choice.</p>
+</div>
+<section id="managing-exceptions">
+<h2>Managing exceptions<a class="headerlink" href="#managing-exceptions" title="Permalink to this headline">#</a></h2>
+<p>What happens if, during the optimization task sent to an <a class="reference internal" href="../island.html#pygmo.island" title="pygmo.island"><code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a>, an exception happens? This question is already explored
+in the <a class="reference internal" href="using_island.html#py-tutorial-using-island"><span class="std std-ref">island tutorial</span></a> and since an <a class="reference internal" href="../archipelago.html#pygmo.archipelago" title="pygmo.archipelago"><code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a> is, basically, a container for multiple <a class="reference internal" href="../island.html#pygmo.island" title="pygmo.island"><code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a>
+here we will overlap with part of that tutorial, exploring exceptions thrown in the <a class="reference internal" href="../archipelago.html#pygmo.archipelago" title="pygmo.archipelago"><code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a> context.</p>
+<p>To show how pygmo handles these situations we use the fake problem below throwing as soon as 300 fitness evaluations are made.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">raise_exception</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">counter</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">fitness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dv</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">==</span> <span class="mi">300</span><span class="p">:</span>
+<span class="gp">... </span>            <span class="k">raise</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s2">&quot;A throwing UDP&quot;</span>
+</pre></div>
+</div>
+<p>Let us now instantiate and run a <a class="reference internal" href="../archipelago.html#pygmo.archipelago" title="pygmo.archipelago"><code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">archi</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">archipelago</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">algo</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">simulated_annealing</span><span class="p">(</span><span class="n">Ts</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">Tf</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">n_T_adj</span>  <span class="o">=</span> <span class="mi">40</span><span class="p">),</span> <span class="n">prob</span> <span class="o">=</span> <span class="n">raise_exception</span><span class="p">(),</span> <span class="n">pop_size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archi</span><span class="o">.</span><span class="n">evolve</span><span class="p">()</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archi</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">archi</span><span class="p">)</span> 
+<span class="go">Number of islands: 5</span>
+<span class="go">Status: idle - **error occurred**</span>
+
+<span class="go">Islands summaries:</span>
+
+<span class="go">    #  Type                    Algo                            Prob            Size  Status</span>
+<span class="go">    ------------------------------------------------------------------------------------------------------------</span>
+<span class="go">    0  Multiprocessing island  Simulated Annealing (Corana&#39;s)  A throwing UDP  20    idle - **error occurred**</span>
+<span class="go">    1  Multiprocessing island  Simulated Annealing (Corana&#39;s)  A throwing UDP  20    idle - **error occurred**</span>
+<span class="go">    2  Multiprocessing island  Simulated Annealing (Corana&#39;s)  A throwing UDP  20    idle - **error occurred**</span>
+<span class="go">    3  Multiprocessing island  Simulated Annealing (Corana&#39;s)  A throwing UDP  20    idle - **error occurred**</span>
+<span class="go">    4  Multiprocessing island  Simulated Annealing (Corana&#39;s)  A throwing UDP  20    idle - **error occurred**</span>
+</pre></div>
+</div>
+<p>The print statment allows us to visually see that errors occured in all islands (each one is containing a copy of the problem and thus
+starts at 0 fitness evaluations to then hit the 300 fevals triggering the <code class="docutils literal notranslate"><span class="pre">raise</span></code> statement).
+We do not know at this stage what happened exactly as the exception is thrown on a separate thread/process and thus its hidden from our main
+scope. To inspect what happened we can write:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">archi</span><span class="o">.</span><span class="n">wait_check</span><span class="p">()</span> 
+<span class="go">RuntimeError                              Traceback (most recent call last)</span>
+<span class="go">&lt;ipython-input-22-d8562cc51573&gt; in &lt;module&gt;()</span>
+<span class="go">----&gt; 1 archi.wait_check()</span>
+
+<span class="go">RuntimeError: The asynchronous evolution of a pythonic island of type &#39;Multiprocessing island&#39; raised an error:</span>
+<span class="go">multiprocessing.pool.RemoteTraceback:</span>
+<span class="go">&quot;&quot;&quot;</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="gr">File &quot;/home/dario/miniconda3/envs/pagmo/lib/python3.6/multiprocessing/pool.py&quot;, line 119, in worker</span>
+<span class="gr">    result = (True, func(*args, **kwds))</span>
+<span class="gr">File &quot;/home/dario/miniconda3/envs/pagmo/lib/python3.6/site-packages/pygmo/_py_islands.py&quot;, line 40, in _evolve_func</span>
+<span class="gr">    return algo.evolve(pop)</span>
+<span class="gr">File &quot;&lt;ipython-input-19-f5ede4c63180&gt;&quot;, line 6, in fitness</span>
+<span class="gr">RuntimeError</span>: <span class="n">No active exception to reraise</span>
+<span class="x">&quot;&quot;&quot;</span>
+
+<span class="gt">The above exception was the direct cause of the following exception:</span>
+
+<span class="gt">Traceback (most recent call last):</span>
+<span class="gr">File &quot;/home/dario/miniconda3/envs/pagmo/lib/python3.6/site-packages/pygmo/_py_islands.py&quot;, line 128, in run_evolve</span>
+<span class="gr">    return res.get()</span>
+<span class="gr">File &quot;/home/dario/miniconda3/envs/pagmo/lib/python3.6/multiprocessing/pool.py&quot;, line 608, in get</span>
+<span class="gr">    raise self._value</span>
+<span class="gr">RuntimeError</span>: <span class="n">No active exception to reraise</span>
+</pre></div>
+</div>
+<p>which will rethrow the first encountered exception and reset all the island states to <code class="docutils literal notranslate"><span class="pre">idle</span></code>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="using_island.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="evolving_a_population.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Evolving a population</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-exceptions">Managing exceptions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By pagmo development team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021, pagmo development team.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

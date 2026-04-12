@@ -1,0 +1,661 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Getting started with hypervolumes &#8212; pygmo 2.19.8 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/hypervolume';</script>
+    <link rel="shortcut icon" href="../_static/logo_favico.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Advanced hypervolume computation and analysis" href="hypervolume_advanced.html" />
+    <link rel="prev" title="Using pygmo’s moead" href="moo_moead.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">pygmo 2.19.8 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Capabilities</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="tutorials.html">Tutorials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="using_problem.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">problem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_algorithm.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">algorithm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_population.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_island.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_archipelago.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="evolving_a_population.html">Evolving a population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_simple.html">Coding a simple User Defined Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_constrained.html">Coding a User Defined Problem with constraints (NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_minlp.html">Coding a User Defined Problem with an integer part (MINLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udp_multi_objective.html">Coding a User Defined Problem with multiple objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="udp_meta_decorator.html">Using the decorator meta-problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding_udi.html">Coding a User Defined Island</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nlopt_basics.html">A first tutorial on the use of NLopt solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moo.html">Basic Multi-Objective Functionalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moo_moead.html">Using pygmo’s <code class="xref py py-class docutils literal notranslate"><span class="pre">moead</span></code></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Getting started with hypervolumes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume_advanced.html">Advanced hypervolume computation and analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervolume_approx.html">Approximating the hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cec2006_gaco_benchmark.html">Benchmarking Extended Ant Colony Optimization on CEC2006 problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cec2013_comp.html">Participating to the CEC2013 Competition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solving_schwefel_20.html">Solving the 20 dimensional Schwefel problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmaes_vs_xnes.html">Comparing algorithms: the case of xNES and CMA-ES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zdt3_maco_benchmark.html">Benchmarking Multi-Objective Hypervolume-based Ant Colony Optimization on ZDT3 problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nspso_tutorial_zdt1_2.html">Benchmarking Nondominated Sorting Particle Swarm Optimizer (NSPSO) on ZDT1 and ZDT2 problems</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api_reference.html">API reference</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm.html">Algorithm class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problem.html">Problem class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../population.html">Population class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../island.html">Island class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../archipelago.html">Archipelago class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bfe.html">Batch fitness evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_policy.html">Replacement policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../s_policy.html">Selection policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html">Miscellanea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../problems.html">List of problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">List of algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../islands.html">List of islands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bfes.html">List of batch evaluators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topologies.html">List of topologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../r_policies.html">List of replacement policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../s_policies.html">List of selection policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generic_utils.html">Generic optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mo_utils.html">Multi-objective optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../con_utils.html">Constrained optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gh_utils.html">Gradient and Hessians utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hv_utils.html">Hypervolume utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../genetic_op_utils.html">Generic optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting.html">Plotting utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../known_issues.html">Known issues</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/esa/pygmo2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/esa/pygmo2/issues/new?title=Issue%20on%20page%20%2Ftutorials/hypervolume.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tutorials/hypervolume.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Getting started with hypervolumes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypervolume-interface-and-construction">Hypervolume interface and construction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-hypervolume-indicator-and-hypervolume-contributions">Computing the hypervolume indicator and hypervolume contributions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="getting-started-with-hypervolumes">
+<span id="py-tutorial-hypervolume"></span><h1>Getting started with hypervolumes<a class="headerlink" href="#getting-started-with-hypervolumes" title="Permalink to this headline">#</a></h1>
+<a class="reference internal image-reference" href="../_images/hypervolume.png"><img alt="../_images/hypervolume.png" class="align-right" src="../_images/hypervolume.png" style="width: 180.0px; height: 194.0px;" /></a>
+<p>In multi-objective problems, the notion of solution is that of non-dominated fronts. The
+quality of such fronts, i.e. the quality of a solution, can be measured by several indicators.</p>
+<p>One of such measures is the hypervolume indicator, which is the hypervolume between a non-dominated front (P) and
+a reference point (R). However, to rigorously calcuate the indicator can be time-consuming, hence efficiency
+and approximate methods can be very important.</p>
+<p>In pygmo the main functionalities allowing to compute the hypervolume indicator (also known as Lebesgue Measure or S-Metric)
+and related quantities are provided by the class <a class="reference internal" href="../hv_utils.html#pygmo.hypervolume" title="pygmo.hypervolume"><code class="xref py py-class docutils literal notranslate"><span class="pre">hypervolume</span></code></a>. Instantiating this class from a
+<a class="reference internal" href="../population.html#pygmo.population" title="pygmo.population"><code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a> or simply from a NumPy array will allow to compute the hypervolume indicator or
+the exclusive contributions of single points using exact or approximated algorithms.</p>
+<p>This tutorial will cover the features introduced by the hypervolume functionality of pygmo.
+First, we will describe how the user interface was designed and point out important notions that ought to be taken into account.
+Later, we will give several examples in order to get you started with the basic hypervolume computations.</p>
+<p>More information on the details
+of the algorithms implemented and their performance can be found in the publication:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Title</dt>
+<dd class="field-odd"><p>“Empirical performance of the approximation of the least hypervolume contributor.”</p>
+</dd>
+<dt class="field-even">Authors</dt>
+<dd class="field-even"><p>Krzysztof Nowak, Marcus Märtens, and Dario Izzo.</p>
+</dd>
+<dt class="field-odd">Published in</dt>
+<dd class="field-odd"><p>International Conference on Parallel Problem Solving from Nature. Springer International Publishing, 2014.</p>
+</dd>
+</dl>
+<section id="hypervolume-interface-and-construction">
+<h2>Hypervolume interface and construction<a class="headerlink" href="#hypervolume-interface-and-construction" title="Permalink to this headline">#</a></h2>
+<p>The main class used for the computation of the hypervolume indicator (also known as Lebesgue Measure or S-Metric) and
+hypervolume contributions is <a class="reference internal" href="../hv_utils.html#pygmo.hypervolume" title="pygmo.hypervolume"><code class="xref py py-class docutils literal notranslate"><span class="pre">pygmo.hypervolume</span></code></a>. You can import the hypervolume class using the following:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pygmo</span><span class="w"> </span><span class="kn">import</span> <span class="n">hypervolume</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;hypervolume&#39;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Since the computation of the hypervolume indicator and the hypervolume contributions are bound tightly
+to multi-objective optimization, we provide two ways of constructing <a class="reference internal" href="../hv_utils.html#pygmo.hypervolume" title="pygmo.hypervolume"><code class="xref py py-class docutils literal notranslate"><span class="pre">hypervolume</span></code></a>.
+The first one uses the fitness values of the individuals of a <a class="reference internal" href="../population.html#pygmo.population" title="pygmo.population"><code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a> for the input point set:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pygmo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Construct a DTLZ-2 problem with 3-dimensional fitness space and 10 dimensions</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">udp</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">problem</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">dtlz</span><span class="p">(</span><span class="n">prob_id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">fdim</span> <span class="o">=</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">population</span><span class="p">(</span><span class="n">udp</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span> <span class="o">=</span> <span class="n">hypervolume</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You need to reconstruct the <a class="reference internal" href="../hv_utils.html#pygmo.hypervolume" title="pygmo.hypervolume"><code class="xref py py-class docutils literal notranslate"><span class="pre">hypervolume</span></code></a> if the fitness values of the population are changing.
+The point set is saved in the <a class="reference internal" href="../hv_utils.html#pygmo.hypervolume" title="pygmo.hypervolume"><code class="xref py py-class docutils literal notranslate"><span class="pre">hypervolume</span></code></a> and copied there once upon contruction.</p>
+</div>
+<p>The second way of construction uses an explicit representation of coordinates for the input point set:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span> <span class="o">=</span> <span class="n">hypervolume</span><span class="p">(</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv_from_list</span> <span class="o">=</span> <span class="n">hypervolume</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>This type of construction is especially useful when you have an explicit geometry you want to analyze
+rather than implicit coordinates by the fitness values of a population that rely on the objective
+function of the corresponding problem.</p>
+</section>
+<section id="computing-the-hypervolume-indicator-and-hypervolume-contributions">
+<h2>Computing the hypervolume indicator and hypervolume contributions<a class="headerlink" href="#computing-the-hypervolume-indicator-and-hypervolume-contributions" title="Permalink to this headline">#</a></h2>
+<p>Before we give an overview of each hypervolume feature, let us discuss the assumptions we make regarding
+the reference point and the input set of points to be valid:</p>
+<p>1. We assume <strong>minimization</strong> in every dimension, that is, a reference point is required to be numerically
+larger or equal in each objective, and strictly larger in at least one of them.</p>
+<p>2. Although the hypervolume for one dimension is well defined mathematically, we require any input data to have
+a matching dimension of at least 2, including the reference point.</p>
+<p>pygmo helps you with these assumptions as it performs checks upon construction and also before each computation
+and will give you an error if your input set or your reference point does not fulfill these criteria.</p>
+<p>For simplicity, we will use a simple 2-dimensional front as an example to show the basic features of a hypervolume object:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span> <span class="o">=</span> <span class="n">hypervolume</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]]</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ref_point</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span>
+<span class="go">3.25</span>
+</pre></div>
+</div>
+<p>We will refer to each point by it’s position on the x-axis, e.g. first point is the point (0,1), fourth
+point is (1.5, 0.75) etc. The plot below shows you the overall geometry of the example with the reference point painted red.</p>
+<a class="reference internal image-reference" href="../_images/hv_front_2d_simple.png"><img alt="../_images/hv_front_2d_simple.png" class="align-right" src="../_images/hv_front_2d_simple.png" style="width: 600px;" /></a>
+<p>Once the hypervolume object is created, it allows for the computation of the following figures:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../hv_utils.html#pygmo.hypervolume.compute" title="pygmo.hypervolume.compute"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute()</span></code></a> - Returns the joint hypervolume of the set of points (S-Metric).</p></li>
+</ol>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># hv and ref_point refer to the data above</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span>
+<span class="go">3.25</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><a class="reference internal" href="../hv_utils.html#pygmo.hypervolume.exclusive" title="pygmo.hypervolume.exclusive"><code class="xref py py-func docutils literal notranslate"><span class="pre">exclusive()</span></code></a> - Returns the exclusive hypervolume by the point at given index.
+The exclusive hypervolume
+is defined as the part of the space dominated exclusively by one point and is also called its (hypervolume) contribution.</p></li>
+</ol>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># hv and ref_point refer to the data above</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span><span class="o">.</span><span class="n">exclusive</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ref_point</span><span class="p">)</span>
+<span class="go">0.25</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span><span class="o">.</span><span class="n">exclusive</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">ref_point</span><span class="p">)</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><a class="reference internal" href="../hv_utils.html#pygmo.hypervolume.least_contributor" title="pygmo.hypervolume.least_contributor"><code class="xref py py-func docutils literal notranslate"><span class="pre">least_contributor()</span></code></a> - Returns the index of a point contributing the least to the hypervolume.</p></li>
+</ol>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># hv and ref_point refer to the data above</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span><span class="o">.</span><span class="n">least_contributor</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span> 
+<span class="go">3</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><a class="reference internal" href="../hv_utils.html#pygmo.hypervolume.greatest_contributor" title="pygmo.hypervolume.greatest_contributor"><code class="xref py py-func docutils literal notranslate"><span class="pre">greatest_contributor()</span></code></a> - Returns the index of a point contributing the most to the hypervolume.</p></li>
+</ol>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># hv and ref_point refer to the data above</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span><span class="o">.</span><span class="n">greatest_contributor</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span> 
+<span class="go">0</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In case of several least/greatest contributors, pygmo returns only one contributor out of all candidates arbitrarily.</p>
+</div>
+<ol class="arabic simple" start="5">
+<li><p><a class="reference internal" href="../hv_utils.html#pygmo.hypervolume.contributions" title="pygmo.hypervolume.contributions"><code class="xref py py-func docutils literal notranslate"><span class="pre">contributions()</span></code></a> - Returns a list of contributions for all points in the set.
+This returns the same results as the successive call to the <a class="reference internal" href="../hv_utils.html#pygmo.hypervolume.exclusive" title="pygmo.hypervolume.exclusive"><code class="xref py py-func docutils literal notranslate"><span class="pre">exclusive()</span></code></a> method
+for each of the points. Due to the implementation, calling <a class="reference internal" href="../hv_utils.html#pygmo.hypervolume.contributions" title="pygmo.hypervolume.contributions"><code class="xref py py-func docutils literal notranslate"><span class="pre">contributions()</span></code></a> once can
+be much faster (up to a linear factor) than computing all contributions separately
+by using <a class="reference internal" href="../hv_utils.html#pygmo.hypervolume.exclusive" title="pygmo.hypervolume.exclusive"><code class="xref py py-func docutils literal notranslate"><span class="pre">exclusive()</span></code></a>.</p></li>
+</ol>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># hv and ref_point refer to the data above</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span><span class="o">.</span><span class="n">contributions</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span> 
+<span class="go">array([0.5 , 0.25, 0.5 , 0.  ])</span>
+</pre></div>
+</div>
+<p>Since all of the methods above require a reference point, it is useful to generate
+one automatically using the <a class="reference internal" href="../mo_utils.html#pygmo.nadir" title="pygmo.nadir"><code class="xref py py-func docutils literal notranslate"><span class="pre">nadir()</span></code></a></p>
+<p>This following short script makes use of some of the features mentioned above to show the hypervolume
+increase after the evolution of a <a class="reference internal" href="../population.html#pygmo.population" title="pygmo.population"><code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a>.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pygmo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Instantiates a 4-objectives problem</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prob</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">problem</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">dtlz</span><span class="p">(</span><span class="n">prob_id</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dim</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">fdim</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">population</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="mi">84</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Construct the hypervolume object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># and get the reference point off-setted by 10 in each objective</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">hypervolume</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">offset</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ref_point</span> <span class="o">=</span> <span class="n">hv</span><span class="o">.</span><span class="n">refpoint</span><span class="p">(</span><span class="n">offset</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span> 
+<span class="go">10.75643</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Evolve the population some generations</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">algo</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">algorithm</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">moead</span><span class="p">(</span><span class="n">gen</span><span class="o">=</span><span class="mi">2000</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pop</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Compute the hypervolume indicator again.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># This time we expect a higher value as SMS-EMOA evolves the population</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># by trying to maximize the hypervolume indicator.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">hypervolume</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">ref_point</span><span class="p">)</span> 
+<span class="go">18.73422</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="moo_moead.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Using pygmo’s <code class="xref py py-class docutils literal notranslate"><span class="pre">moead</span></code></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="hypervolume_advanced.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Advanced hypervolume computation and analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypervolume-interface-and-construction">Hypervolume interface and construction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-hypervolume-indicator-and-hypervolume-contributions">Computing the hypervolume indicator and hypervolume contributions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By pagmo development team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021, pagmo development team.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

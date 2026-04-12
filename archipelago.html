@@ -1,0 +1,901 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Archipelago class &#8212; pygmo 2.19.8 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'archipelago';</script>
+    <link rel="shortcut icon" href="_static/logo_favico.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Batch fitness evaluator" href="bfe.html" />
+    <link rel="prev" title="Island class" href="island.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">pygmo 2.19.8 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Capabilities</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/tutorials.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_problem.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">problem</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_algorithm.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">algorithm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_population.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_island.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/using_archipelago.html">Use of the class <code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/evolving_a_population.html">Evolving a population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/coding_udp_simple.html">Coding a simple User Defined Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/coding_udp_constrained.html">Coding a User Defined Problem with constraints (NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/coding_udp_minlp.html">Coding a User Defined Problem with an integer part (MINLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/coding_udp_multi_objective.html">Coding a User Defined Problem with multiple objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/udp_meta_decorator.html">Using the decorator meta-problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/coding_udi.html">Coding a User Defined Island</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/nlopt_basics.html">A first tutorial on the use of NLopt solvers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/moo.html">Basic Multi-Objective Functionalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/moo_moead.html">Using pygmo’s <code class="xref py py-class docutils literal notranslate"><span class="pre">moead</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/hypervolume.html">Getting started with hypervolumes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/hypervolume_advanced.html">Advanced hypervolume computation and analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/hypervolume_approx.html">Approximating the hypervolume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/cec2006_gaco_benchmark.html">Benchmarking Extended Ant Colony Optimization on CEC2006 problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/cec2013_comp.html">Participating to the CEC2013 Competition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/solving_schwefel_20.html">Solving the 20 dimensional Schwefel problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/cmaes_vs_xnes.html">Comparing algorithms: the case of xNES and CMA-ES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/zdt3_maco_benchmark.html">Benchmarking Multi-Objective Hypervolume-based Ant Colony Optimization on ZDT3 problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/nspso_tutorial_zdt1_2.html">Benchmarking Nondominated Sorting Particle Swarm Optimizer (NSPSO) on ZDT1 and ZDT2 problems</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="api_reference.html">API reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="algorithm.html">Algorithm class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problem.html">Problem class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="population.html">Population class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="island.html">Island class</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Archipelago class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bfe.html">Batch fitness evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r_policy.html">Replacement policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s_policy.html">Selection policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellanea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html">List of problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">List of algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="islands.html">List of islands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bfes.html">List of batch evaluators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topologies.html">List of topologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r_policies.html">List of replacement policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s_policies.html">List of selection policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generic_utils.html">Generic optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mo_utils.html">Multi-objective optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="con_utils.html">Constrained optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gh_utils.html">Gradient and Hessians utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hv_utils.html">Hypervolume utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="genetic_op_utils.html">Generic optimization utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html">Plotting utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="known_issues.html">Known issues</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/esa/pygmo2" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/esa/pygmo2/issues/new?title=Issue%20on%20page%20%2Farchipelago.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/archipelago.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Archipelago class</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="archipelago-class">
+<h1>Archipelago class<a class="headerlink" href="#archipelago-class" title="Permalink to this headline">#</a></h1>
+<img alt="_images/archi_no_text.png" src="_images/archi_no_text.png" />
+<dl class="py class">
+<dt class="sig sig-object py" id="pygmo.archipelago">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pygmo.</span></span><span class="sig-name descname"><span class="pre">archipelago</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">topology()</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago" title="Permalink to this definition">#</a></dt>
+<dd><p>Archipelago.</p>
+<p>An archipelago is a collection of <a class="reference internal" href="island.html#pygmo.island" title="pygmo.island"><code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a> objects connected by a
+<a class="reference internal" href="topology.html#pygmo.topology" title="pygmo.topology"><code class="xref py py-class docutils literal notranslate"><span class="pre">topology</span></code></a>. The islands in the archipelago can exchange individuals
+(i.e., candidate solutions) via a process called <em>migration</em>. The individuals migrate
+across the routes described by the topology, and the islands’ replacement
+and selection policies (see <a class="reference internal" href="r_policy.html#pygmo.r_policy" title="pygmo.r_policy"><code class="xref py py-class docutils literal notranslate"><span class="pre">r_policy</span></code></a> and <a class="reference internal" href="s_policy.html#pygmo.s_policy" title="pygmo.s_policy"><code class="xref py py-class docutils literal notranslate"><span class="pre">s_policy</span></code></a>)
+establish how individuals are replaced in and selected from the islands’ populations.</p>
+<p>The interface of <a class="reference internal" href="#pygmo.archipelago" title="pygmo.archipelago"><code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a> mirrors partially the interface
+of <a class="reference internal" href="island.html#pygmo.island" title="pygmo.island"><code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a>: the evolution is initiated by a call to <a class="reference internal" href="#pygmo.archipelago.evolve" title="pygmo.archipelago.evolve"><code class="xref py py-func docutils literal notranslate"><span class="pre">evolve()</span></code></a>,
+and at any time the user can query the
+state of the archipelago and access its island members. The user can explicitly wait for pending evolutions
+to conclude by calling the <a class="reference internal" href="#pygmo.archipelago.wait" title="pygmo.archipelago.wait"><code class="xref py py-func docutils literal notranslate"><span class="pre">wait()</span></code></a> and <a class="reference internal" href="#pygmo.archipelago.wait_check" title="pygmo.archipelago.wait_check"><code class="xref py py-func docutils literal notranslate"><span class="pre">wait_check()</span></code></a>
+methods. The status of ongoing evolutions in the archipelago can be queried via
+<a class="reference internal" href="#pygmo.archipelago.status" title="pygmo.archipelago.status"><code class="xref py py-func docutils literal notranslate"><span class="pre">status()</span></code></a>.</p>
+<p>The constructor will initialise an archipelago with a topology <em>t</em> and
+<em>n</em> islands built from <em>kwargs</em>.
+The keyword arguments accept the same format as explained in the constructor of
+<a class="reference internal" href="island.html#pygmo.island" title="pygmo.island"><code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a>, with the following differences:</p>
+<ul class="simple">
+<li><p><em>size</em> is replaced by <em>pop_size</em>, for clarity,</p></li>
+<li><p>the <em>seed</em> argument, if present, is used to initialise a random number generator
+that, in turn, is used to generate random seeds for each island population. In other
+words, the <em>seed</em> argument allows to generate randomly (but deterministically)
+the seeds of the populations in the archipelago. If <em>seed</em> is not provided, the seeds
+of the populations will be random and non-deterministic.</p></li>
+</ul>
+<p>This class is the Python counterpart of the C++ class <a class="reference external" href="https://esa.github.io/pagmo2/docs/cpp/archipelago.html#_CPPv4N5pagmo11archipelagoE" title="(in pagmo v2.19.1)"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">pagmo::archipelago</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – the number of islands in the archipelago</p></li>
+<li><p><strong>t</strong> – a user-defined topology (either Python or C++), or an instance of <a class="reference internal" href="topology.html#pygmo.topology" title="pygmo.topology"><code class="xref py py-class docutils literal notranslate"><span class="pre">topology</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>udi</strong> – a user-defined island, either Python or C++</p></li>
+<li><p><strong>algo</strong> – a user-defined algorithm (either Python or C++), or an instance of <a class="reference internal" href="algorithm.html#pygmo.algorithm" title="pygmo.algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithm</span></code></a></p></li>
+<li><p><strong>pop</strong> (<a class="reference internal" href="population.html#pygmo.population" title="pygmo.population"><code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a>) – a population</p></li>
+<li><p><strong>prob</strong> – a user-defined problem (either Python or C++), or an instance of <a class="reference internal" href="problem.html#pygmo.problem" title="pygmo.problem"><code class="xref py py-class docutils literal notranslate"><span class="pre">problem</span></code></a></p></li>
+<li><p><strong>b</strong> – a user-defined batch fitness evaluator (either Python or C++), or an instance of <a class="reference internal" href="bfe.html#pygmo.bfe" title="pygmo.bfe"><code class="xref py py-class docutils literal notranslate"><span class="pre">bfe</span></code></a></p></li>
+<li><p><strong>pop_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – the number of individuals for each island</p></li>
+<li><p><strong>r_pol</strong> – a user-defined replacement policy (either Python or C++), or an instance of <a class="reference internal" href="r_policy.html#pygmo.r_policy" title="pygmo.r_policy"><code class="xref py py-class docutils literal notranslate"><span class="pre">r_policy</span></code></a></p></li>
+<li><p><strong>s_pol</strong> – a user-defined selection policy (either Python or C++), or an instance of <a class="reference internal" href="s_policy.html#pygmo.s_policy" title="pygmo.s_policy"><code class="xref py py-class docutils literal notranslate"><span class="pre">s_policy</span></code></a></p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – the random seed</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.14)"><strong>TypeError</strong></a> – if <em>n</em> is not an integral type</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – if <em>n</em> is negative</p></li>
+<li><p><strong>unspecified</strong> – any exception thrown by the constructor of <a class="reference internal" href="island.html#pygmo.island" title="pygmo.island"><code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a>,
+    by the underlying C++ constructor, <a class="reference internal" href="#pygmo.archipelago.push_back" title="pygmo.archipelago.push_back"><code class="xref py py-func docutils literal notranslate"><span class="pre">push_back()</span></code></a> or
+    by the public interface of <a class="reference internal" href="topology.html#pygmo.topology" title="pygmo.topology"><code class="xref py py-class docutils literal notranslate"><span class="pre">topology</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pygmo</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archi</span> <span class="o">=</span> <span class="n">archipelago</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="n">algo</span> <span class="o">=</span> <span class="n">de</span><span class="p">(),</span> <span class="n">prob</span> <span class="o">=</span> <span class="n">rosenbrock</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">pop_size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="mi">32</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archi</span><span class="o">.</span><span class="n">evolve</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archi</span> 
+<span class="go">Number of islands: 16</span>
+<span class="go">Status: busy</span>
+
+<span class="go">Islands summaries:</span>
+
+<span class="go">        #   Type           Algo                    Prob                                  Size  Status</span>
+<span class="go">        -----------------------------------------------------------------------------------------------</span>
+<span class="go">        0   Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    idle</span>
+<span class="go">        1   Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    idle</span>
+<span class="go">        2   Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    idle</span>
+<span class="go">        3   Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    idle</span>
+<span class="go">        4   Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    busy</span>
+<span class="go">        5   Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    idle</span>
+<span class="go">        6   Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    busy</span>
+<span class="go">        7   Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    busy</span>
+<span class="go">        8   Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    idle</span>
+<span class="go">        9   Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    idle</span>
+<span class="go">        10  Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    idle</span>
+<span class="go">        11  Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    idle</span>
+<span class="go">        12  Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    idle</span>
+<span class="go">        13  Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    busy</span>
+<span class="go">        14  Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    busy</span>
+<span class="go">        15  Thread island  Differential Evolution  Multidimensional Rosenbrock Function  20    idle</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">archi</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">archi</span><span class="o">.</span><span class="n">get_champions_f</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> 
+<span class="go">[array([ 125441.77328885]),</span>
+<span class="go">array([ 144025.63904164]),</span>
+<span class="go">array([ 25387.38989711]),</span>
+<span class="go">array([ 56029.44160232]),</span>
+<span class="go">array([ 47760.99082202]),</span>
+<span class="go">array([ 118552.94891993]),</span>
+<span class="go">array([ 118405.29575447]),</span>
+<span class="go">array([ 101866.81846325]),</span>
+<span class="go">array([ 166106.12039851]),</span>
+<span class="go">array([ 167408.00058506]),</span>
+<span class="go">array([ 148815.47953885]),</span>
+<span class="go">array([ 165186.74476375]),</span>
+<span class="go">array([ 326615.28881936]),</span>
+<span class="go">array([ 167301.16445135]),</span>
+<span class="go">array([ 166871.42760503]),</span>
+<span class="go">array([ 75133.38815736])]</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="pygmo.archipelago.evolve">
+<span class="sig-name descname"><span class="pre">evolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago.evolve" title="Permalink to this definition">#</a></dt>
+<dd><p>Evolve archipelago.</p>
+<p>This method will call <a class="reference internal" href="island.html#pygmo.island.evolve" title="pygmo.island.evolve"><code class="xref py py-func docutils literal notranslate"><span class="pre">pygmo.island.evolve()</span></code></a> on all the islands of the archipelago.
+The input parameter <em>n</em> will be passed to the invocations of <a class="reference internal" href="island.html#pygmo.island.evolve" title="pygmo.island.evolve"><code class="xref py py-func docutils literal notranslate"><span class="pre">pygmo.island.evolve()</span></code></a> for each island.
+The <a class="reference internal" href="#pygmo.archipelago.status" title="pygmo.archipelago.status"><code class="xref py py-attr docutils literal notranslate"><span class="pre">status</span></code></a> attribute can be used to query the status of the asynchronous operations in the
+archipelago.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – the parameter that will be passed to <a class="reference internal" href="island.html#pygmo.island.evolve" title="pygmo.island.evolve"><code class="xref py py-func docutils literal notranslate"><span class="pre">pygmo.island.evolve()</span></code></a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>unspecified</strong> – any exception thrown by <a class="reference internal" href="island.html#pygmo.island.evolve" title="pygmo.island.evolve"><code class="xref py py-func docutils literal notranslate"><span class="pre">pygmo.island.evolve()</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygmo.archipelago.get_champions_f">
+<span class="sig-name descname"><span class="pre">get_champions_f</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago.get_champions_f" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the fitness vectors of the islands’ champions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the fitness vectors of the islands’ champions</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of 1D NumPy float arrays</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>unspecified</strong> – any exception thrown by failures at the intersection between C++ and Python (e.g., type conversion errors,
+    mismatched function signatures, etc.)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygmo.archipelago.get_champions_x">
+<span class="sig-name descname"><span class="pre">get_champions_x</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago.get_champions_x" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the decision vectors of the islands’ champions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the decision vectors of the islands’ champions</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of 1D NumPy float arrays</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>unspecified</strong> – any exception thrown by failures at the intersection between C++ and Python (e.g., type conversion errors,
+    mismatched function signatures, etc.)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygmo.archipelago.get_migrant_handling">
+<span class="sig-name descname"><span class="pre">get_migrant_handling</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago.get_migrant_handling" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the current migrant handling policy for this archipelago</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="misc.html#pygmo.migrant_handling" title="pygmo.migrant_handling"><code class="xref py py-class docutils literal notranslate"><span class="pre">migrant_handling</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygmo.archipelago.get_migrants_db">
+<span class="sig-name descname"><span class="pre">get_migrants_db</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago.get_migrants_db" title="Permalink to this definition">#</a></dt>
+<dd><p>During the evolution of an archipelago, islands will periodically
+store the individuals selected for migration in a <em>migrant database</em>.
+This is a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> objects whose
+size is equal to the number of islands in the archipelago, and which
+contains the current candidate outgoing migrants for each island.</p>
+<p>The migrants tuples consist of 3 values each:</p>
+<ul class="simple">
+<li><p>a 1D NumPy array of individual IDs (represented as 64-bit unsigned integrals),</p></li>
+<li><p>a 2D NumPy array of decision vectors (i.e., the decision vectors of each individual,
+stored in row-major order),</p></li>
+<li><p>a 2D NumPy array of fitness vectors (i.e., the fitness vectors of each individual,
+stored in row-major order).</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a copy of the database of migrants</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>unspecified</strong> – any exception thrown by failures at the intersection between C++ and Python (e.g., type conversion errors,
+    mismatched function signatures, etc.)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygmo.archipelago.get_migration_log">
+<span class="sig-name descname"><span class="pre">get_migration_log</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago.get_migration_log" title="Permalink to this definition">#</a></dt>
+<dd><p>Each time an individual migrates from an island (the source) to another
+(the destination), an entry will be added to the migration log.
+The entry is a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> of 6 elements containing:</p>
+<ul class="simple">
+<li><p>a timestamp of the migration,</p></li>
+<li><p>the ID of the individual that migrated,</p></li>
+<li><p>the decision and fitness vectors of the individual that migrated,</p></li>
+<li><p>the indices of the source and destination islands.</p></li>
+</ul>
+<p>The migration log is a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of migration entries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a copy of the migration log</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>unspecified</strong> – any exception thrown by failures at the intersection between C++ and Python (e.g., type conversion errors,
+    mismatched function signatures, etc.)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygmo.archipelago.get_migration_type">
+<span class="sig-name descname"><span class="pre">get_migration_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago.get_migration_type" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the current migration type for this archipelago</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="misc.html#pygmo.migration_type" title="pygmo.migration_type"><code class="xref py py-class docutils literal notranslate"><span class="pre">migration_type</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygmo.archipelago.get_topology">
+<span class="sig-name descname"><span class="pre">get_topology</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago.get_topology" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a copy of the current topology</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">tyopology</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygmo.archipelago.push_back">
+<span class="sig-name descname"><span class="pre">push_back</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago.push_back" title="Permalink to this definition">#</a></dt>
+<dd><p>Add an island.</p>
+<p>This method will construct an island from the supplied arguments and add it to the archipelago.
+Islands are added at the end of the archipelago (that is, the new island will have an index
+equal to the size of the archipelago before the call to this method). <a class="reference internal" href="topology.html#pygmo.topology.push_back" title="pygmo.topology.push_back"><code class="xref py py-func docutils literal notranslate"><span class="pre">pygmo.topology.push_back()</span></code></a>
+will also be called on the <a class="reference internal" href="topology.html#pygmo.topology" title="pygmo.topology"><code class="xref py py-class docutils literal notranslate"><span class="pre">topology</span></code></a> associated to this archipelago, so that
+the addition of a new island to the archipelago is mirrored by the addition of a new vertex
+to the topology.</p>
+<p>This method accepts either a single positional argument, or a set of
+keyword arguments:</p>
+<ul class="simple">
+<li><p>if no positional arguments are provided, then the keyword arguments will
+be used to construct a <a class="reference internal" href="island.html#pygmo.island" title="pygmo.island"><code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a> which will then be added
+to the archipelago; otherwise,</p></li>
+<li><p>if a single positional argument is provided and no keyword arguments are
+provided, then the positional argument is interpreted as an <a class="reference internal" href="island.html#pygmo.island" title="pygmo.island"><code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a>
+object to be added to the archipelago.</p></li>
+</ul>
+<p>Any other combination of positional/keyword arguments will result in an error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – if, when using positional arguments, there are more than 1 positional arguments,
+    or if keyword arguments are also used at the same time</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.14)"><strong>TypeError</strong></a> – if, when using a single positional argument, the type of that argument
+    is not <a class="reference internal" href="island.html#pygmo.island" title="pygmo.island"><code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a></p></li>
+<li><p><strong>unspecified</strong> – any exception thrown by the constructor of <a class="reference internal" href="island.html#pygmo.island" title="pygmo.island"><code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a>,
+    <a class="reference internal" href="topology.html#pygmo.topology.push_back" title="pygmo.topology.push_back"><code class="xref py py-func docutils literal notranslate"><span class="pre">pygmo.topology.push_back()</span></code></a> or by the underlying C++ method</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygmo.archipelago.set_migrant_handling">
+<span class="sig-name descname"><span class="pre">set_migrant_handling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mh</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago.set_migrant_handling" title="Permalink to this definition">#</a></dt>
+<dd><p>Set a new migrant handling policy for this archipelago.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mh</strong> (<a class="reference internal" href="misc.html#pygmo.migrant_handling" title="pygmo.migrant_handling"><code class="xref py py-class docutils literal notranslate"><span class="pre">migrant_handling</span></code></a>) – the desired migrant handling policy for this archipelago</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygmo.archipelago.set_migrants_db">
+<span class="sig-name descname"><span class="pre">set_migrants_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mig</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago.set_migrants_db" title="Permalink to this definition">#</a></dt>
+<dd><p>During the evolution of an archipelago, islands will periodically
+store the individuals selected for migration in a <em>migrant database</em>.
+This is a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> objects whose
+size is equal to the number of islands in the archipelago, and which
+contains the current candidate outgoing migrants for each island.</p>
+<p>The migrants tuples consist of 3 values each:</p>
+<ul class="simple">
+<li><p>a 1D NumPy array of individual IDs (represented as 64-bit unsigned integrals),</p></li>
+<li><p>a 2D NumPy array of decision vectors (i.e., the decision vectors of each individual,
+stored in row-major order),</p></li>
+<li><p>a 2D NumPy array of fitness vectors (i.e., the fitness vectors of each individual,
+stored in row-major order).</p></li>
+</ul>
+<p>This setter allows to replace the current database of migrants with a new one.</p>
+<p>Note that this setter will accept in input a malformed database of migrants without complaining.
+An invalid database of migrants will however result in exceptions being raised when migration occurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mig</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>) – the new database of migrants</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>unspecified</strong> – any exception thrown by failures at the intersection between C++ and Python (e.g., type conversion errors,
+    mismatched function signatures, etc.)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygmo.archipelago.set_migration_type">
+<span class="sig-name descname"><span class="pre">set_migration_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago.set_migration_type" title="Permalink to this definition">#</a></dt>
+<dd><p>Set a new migration type for this archipelago.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mt</strong> (<a class="reference internal" href="misc.html#pygmo.migration_type" title="pygmo.migration_type"><code class="xref py py-class docutils literal notranslate"><span class="pre">migration_type</span></code></a>) – the desired migration type for this archipelago</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygmo.archipelago.set_topology">
+<span class="sig-name descname"><span class="pre">set_topology</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago.set_topology" title="Permalink to this definition">#</a></dt>
+<dd><p>This method will wait for any ongoing evolution in the archipelago to finish,
+and it will then set the topology of the archipelago to <em>t</em>.</p>
+<p>Note that it is the user’s responsibility to ensure that the new topology is
+consistent with the archipelago’s properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> – a user-defined topology (either Python or C++), or an instance of <a class="reference internal" href="topology.html#pygmo.topology" title="pygmo.topology"><code class="xref py py-class docutils literal notranslate"><span class="pre">topology</span></code></a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>unspecified</strong> – any exception thrown by copying the topology</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pygmo.archipelago.status">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">status</span></span><a class="headerlink" href="#pygmo.archipelago.status" title="Permalink to this definition">#</a></dt>
+<dd><p>Status of the archipelago.</p>
+<p>This read-only property will return an <a class="reference internal" href="misc.html#pygmo.evolve_status" title="pygmo.evolve_status"><code class="xref py py-class docutils literal notranslate"><span class="pre">evolve_status</span></code></a> flag indicating the current status of
+asynchronous operations in the archipelago. The flag will be:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">idle</span></code> if, for all the islands in the archipelago, <a class="reference internal" href="island.html#pygmo.island.status" title="pygmo.island.status"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pygmo.island.status</span></code></a>
+returns <code class="docutils literal notranslate"><span class="pre">idle</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">busy</span></code> if, for at least one island in the archipelago, <a class="reference internal" href="island.html#pygmo.island.status" title="pygmo.island.status"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pygmo.island.status</span></code></a>
+returns <code class="docutils literal notranslate"><span class="pre">busy</span></code>, and for no island <a class="reference internal" href="island.html#pygmo.island.status" title="pygmo.island.status"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pygmo.island.status</span></code></a> returns an error status;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">idle_error</span></code> if no island in the archipelago is busy and for at least one island
+<a class="reference internal" href="island.html#pygmo.island.status" title="pygmo.island.status"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pygmo.island.status</span></code></a> returns <code class="docutils literal notranslate"><span class="pre">idle_error</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">busy_error</span></code> if, for at least one island in the archipelago, <a class="reference internal" href="island.html#pygmo.island.status" title="pygmo.island.status"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pygmo.island.status</span></code></a>
+returns an error status and at least one island is busy.</p></li>
+</ul>
+<p>Note that after a call to <a class="reference internal" href="#pygmo.archipelago.wait_check" title="pygmo.archipelago.wait_check"><code class="xref py py-func docutils literal notranslate"><span class="pre">wait_check()</span></code></a>, <a class="reference internal" href="#pygmo.archipelago.status" title="pygmo.archipelago.status"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pygmo.archipelago.status</span></code></a> will always return
+<code class="docutils literal notranslate"><span class="pre">idle</span></code>, and after a call to <a class="reference internal" href="#pygmo.archipelago.wait" title="pygmo.archipelago.wait"><code class="xref py py-func docutils literal notranslate"><span class="pre">wait()</span></code></a>, <a class="reference internal" href="#pygmo.archipelago.status" title="pygmo.archipelago.status"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pygmo.archipelago.status</span></code></a>
+will always return either <code class="docutils literal notranslate"><span class="pre">idle</span></code> or <code class="docutils literal notranslate"><span class="pre">idle_error</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a flag indicating the current status of asynchronous operations in the archipelago</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="misc.html#pygmo.evolve_status" title="pygmo.evolve_status"><code class="xref py py-class docutils literal notranslate"><span class="pre">evolve_status</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygmo.archipelago.wait">
+<span class="sig-name descname"><span class="pre">wait</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago.wait" title="Permalink to this definition">#</a></dt>
+<dd><p>Block until all evolutions have finished.</p>
+<p>This method will call <a class="reference internal" href="island.html#pygmo.island.wait" title="pygmo.island.wait"><code class="xref py py-func docutils literal notranslate"><span class="pre">pygmo.island.wait()</span></code></a> on all the islands of the archipelago. Exceptions thrown by island
+evolutions can be re-raised via <a class="reference internal" href="#pygmo.archipelago.wait_check" title="pygmo.archipelago.wait_check"><code class="xref py py-func docutils literal notranslate"><span class="pre">wait_check()</span></code></a>: they will <strong>not</strong> be re-thrown by this method.
+Also, contrary to <a class="reference internal" href="#pygmo.archipelago.wait_check" title="pygmo.archipelago.wait_check"><code class="xref py py-func docutils literal notranslate"><span class="pre">wait_check()</span></code></a>, this method will <strong>not</strong> reset the status of the archipelago:
+after a call to <a class="reference internal" href="#pygmo.archipelago.wait" title="pygmo.archipelago.wait"><code class="xref py py-func docutils literal notranslate"><span class="pre">wait()</span></code></a>, the <a class="reference internal" href="#pygmo.archipelago.status" title="pygmo.archipelago.status"><code class="xref py py-attr docutils literal notranslate"><span class="pre">status</span></code></a> attribute will
+always return either <code class="docutils literal notranslate"><span class="pre">idle</span></code> or <code class="docutils literal notranslate"><span class="pre">idle_error</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pygmo.archipelago.wait_check">
+<span class="sig-name descname"><span class="pre">wait_check</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pygmo.archipelago.wait_check" title="Permalink to this definition">#</a></dt>
+<dd><p>Block until all evolutions have finished and raise the first exception that was encountered.</p>
+<p>This method will call <a class="reference internal" href="island.html#pygmo.island.wait_check" title="pygmo.island.wait_check"><code class="xref py py-func docutils literal notranslate"><span class="pre">pygmo.island.wait_check()</span></code></a> on all the islands of the archipelago (following
+the order in which the islands were inserted into the archipelago).
+The first exception raised by <a class="reference internal" href="island.html#pygmo.island.wait_check" title="pygmo.island.wait_check"><code class="xref py py-func docutils literal notranslate"><span class="pre">pygmo.island.wait_check()</span></code></a> will be re-raised by this method,
+and all the exceptions thrown by the other calls to <a class="reference internal" href="island.html#pygmo.island.wait_check" title="pygmo.island.wait_check"><code class="xref py py-func docutils literal notranslate"><span class="pre">pygmo.island.wait_check()</span></code></a> will be ignored.</p>
+<p>Note that <a class="reference internal" href="#pygmo.archipelago.wait_check" title="pygmo.archipelago.wait_check"><code class="xref py py-func docutils literal notranslate"><span class="pre">wait_check()</span></code></a> resets the status of the archipelago: after a call to
+<a class="reference internal" href="#pygmo.archipelago.wait_check" title="pygmo.archipelago.wait_check"><code class="xref py py-func docutils literal notranslate"><span class="pre">wait_check()</span></code></a>, the <a class="reference internal" href="#pygmo.archipelago.status" title="pygmo.archipelago.status"><code class="xref py py-attr docutils literal notranslate"><span class="pre">status</span></code></a> attribute will
+always return <code class="docutils literal notranslate"><span class="pre">idle</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>unspecified</strong> – any exception thrown by any evolution task queued in the archipelago’s
+    islands</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="island.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Island class</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="bfe.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Batch fitness evaluator</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By pagmo development team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021, pagmo development team.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
