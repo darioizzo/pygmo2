@@ -91,7 +91,7 @@ fi
 # Install packaging/build/test runtime dependencies in the selected Python.
 "${PYBIN}/python" -m pip install --upgrade pip setuptools wheel
 "${PYBIN}/python" -m pip install cloudpickle numpy
-"${PYBIN}/python" -m pip install networkx ipyparallel scipy auditwheel twine
+"${PYBIN}/python" -m pip install networkx ipyparallel scipy auditwheel
 
 # Build and install pagmo2 (released tarball on tags, git HEAD otherwise).
 cd /root/install
@@ -143,10 +143,5 @@ cd /
 "${PYBIN}/ipcluster" start --daemonize=True -n 2
 sleep 20
 "${PYBIN}/python" -c "import pygmo; pygmo.test.run_test_suite(1); pygmo.mp_island.shutdown_pool(); pygmo.mp_bfe.shutdown_pool()"
-
-# Upload wheels only for version tags.
-if [[ "${PYGMO_RELEASE_BUILD}" == "yes" ]]; then
-	"${PYBIN}/python" -m twine upload --non-interactive --skip-existing "${GITHUB_WORKSPACE}/build/wheel/dist2/pygmo"*.whl
-fi
 
 set +x
