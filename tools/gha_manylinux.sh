@@ -35,15 +35,17 @@ done
 git config --global --add safe.directory "${GITHUB_WORKSPACE}"
 
 # Map workflow build type to the manylinux Python ABI directory.
+# Map build type to manylinux Python ABI folder.
 case "${PYGMO_BUILD_TYPE}" in
-	*314*) PYTHON_DIR="cp314-cp314" ;;
-	*313*) PYTHON_DIR="cp313-cp313" ;;
-	*312*) PYTHON_DIR="cp312-cp312" ;;
-	*311*) PYTHON_DIR="cp311-cp311" ;;
-	*)
-		echo "Invalid build type '${PYGMO_BUILD_TYPE}'. Supported: Python314, Python313, Python312, Python311"
-		exit 1
-		;;
+    *314t*) PYTHON_DIR="cp314-cp314t" ;;
+    *314*) PYTHON_DIR="cp314-cp314" ;;
+    *313*) PYTHON_DIR="cp313-cp313" ;;
+    *312*) PYTHON_DIR="cp312-cp312" ;;
+    *311*) PYTHON_DIR="cp311-cp311" ;;
+    *)
+        echo "Invalid build type '${PYGMO_BUILD_TYPE}'. Supported: Python314t, Python314, Python313, Python312, Python311"
+        exit 1
+        ;;
 esac
 
 # Resolve python/pip/ipcluster binaries for the selected interpreter.
@@ -92,6 +94,9 @@ fi
 "${PYBIN}/python" -m pip install --upgrade pip setuptools wheel
 "${PYBIN}/python" -m pip install cloudpickle numpy
 "${PYBIN}/python" -m pip install networkx ipyparallel scipy auditwheel
+
+# Install BLAS/LAPACK dependencies needed by xtensor-blas consumers.
+yum install -y openblas-devel lapack-devel || yum install -y openblas lapack
 
 # Build and install pagmo2 (released tarball on tags, git HEAD otherwise).
 cd /root/install
