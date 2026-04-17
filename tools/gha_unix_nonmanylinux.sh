@@ -9,7 +9,7 @@ set -e
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 conda install -y -q \
-    c-compiler cxx-compiler cmake eigen nlopt ipopt boost-cpp tbb tbb-devel \
+    c-compiler cxx-compiler cmake 'eigen<4' nlopt ipopt boost-cpp tbb tbb-devel \
     "python=${PYGMO_PYTHON_VERSION}" \
     numpy cloudpickle networkx numba pybind11 scipy
 
