@@ -399,7 +399,7 @@ algorithm (UDA) wraps the NLopt library making it easily accessible via the pygm
 <section id="i-have-the-gradient">
 <h2>I have the gradient<a class="headerlink" href="#i-have-the-gradient" title="Permalink to this headline">#</a></h2>
 <div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pygmo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">uda</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">nlopt</span><span class="p">(</span><span class="s2">&quot;slsqp&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">uda</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">nlopt</span><span class="p">(</span><span class="s2">"slsqp"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">algo</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">algorithm</span><span class="p">(</span><span class="n">uda</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">algo</span><span class="p">)</span> 
 <span class="go">Algorithm name: NLopt - slsqp: [deterministic]</span>
@@ -409,7 +409,7 @@ algorithm (UDA) wraps the NLopt library making it easily accessible via the pygm
 
 <span class="go">Extra info:</span>
 <span class="go">    NLopt version: ...</span>
-<span class="go">    Solver: &#39;slsqp&#39;</span>
+<span class="go">    Solver: 'slsqp'</span>
 <span class="go">    Last optimisation return code: NLOPT_SUCCESS (value = 1, Generic success return value)</span>
 <span class="go">    Verbosity: 0</span>
 <span class="go">    Individual selection policy: best</span>
@@ -485,10 +485,10 @@ also has its gradient implemented so that we do not have to worry about that for
 shown here.</p>
 <div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">log</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">nlopt</span><span class="p">)</span><span class="o">.</span><span class="n">get_log</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">([</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">log</span><span class="p">],</span> <span class="p">[</span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">log</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;obj&quot;</span><span class="p">)</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">([</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">log</span><span class="p">],</span> <span class="p">[</span><span class="n">line</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">log</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;con&quot;</span><span class="p">)</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;objevals&quot;</span><span class="p">)</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">([</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">log</span><span class="p">],</span> <span class="p">[</span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">log</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">"obj"</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">([</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">log</span><span class="p">],</span> <span class="p">[</span><span class="n">line</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">log</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">"con"</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"objevals"</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"value"</span><span class="p">)</span> 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </pre></div>
 </div>
@@ -512,14 +512,14 @@ an example:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pop</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">population</span><span class="p">(</span><span class="n">prob</span> <span class="o">=</span> <span class="n">my_udp</span><span class="p">(),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pop</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/home/dario/miniconda3/envs/pagmo/lib/python3.6/doctest.py&quot;</span>, line <span class="m">1330</span>, in <span class="n">__run</span>
+  File <span class="nb">"/home/dario/miniconda3/envs/pagmo/lib/python3.6/doctest.py"</span>, line <span class="m">1330</span>, in <span class="n">__run</span>
 <span class="w">    </span><span class="n">compileflags</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">test</span><span class="o">.</span><span class="n">globs</span><span class="p">)</span>
-  File <span class="nb">&quot;&lt;doctest default[3]&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">"&lt;doctest default[3]&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
 <span class="w">    </span><span class="n">pop</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
 <span class="gr">ValueError</span><span class="w">:</span>
 <span class="x">function: operator()</span>
 <span class="x">where: /home/user/Documents/pagmo2/include/pagmo/algorithms/nlopt.hpp, 259</span>
-<span class="x">what: during an optimization with the NLopt algorithm &#39;slsqp&#39; a fitness gradient was requested, but the optimisation problem &#39;&lt;class &#39;my_udp&#39;&gt;&#39; does not provide it</span>
+<span class="x">what: during an optimization with the NLopt algorithm 'slsqp' a fitness gradient was requested, but the optimisation problem '&lt;class 'my_udp'&gt;' does not provide it</span>
 </pre></div>
 </div>
 <p>Bummer! How can I possibly provide a gradient for such a difficult expression of the fitness? Clearly making the derivatives here is not an option :)

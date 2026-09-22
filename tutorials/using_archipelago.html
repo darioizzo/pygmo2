@@ -434,10 +434,10 @@ defined from Python)</p>
 <span class="gp">... </span>        <span class="k">return</span> <span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="s2">&quot;A toy problem&quot;</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s2">"A toy problem"</span>
 <span class="gp">...</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_extra_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Dimensions: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">Dimensions: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now, without further ado, lets use the full power of pygmo and prepare to be shocked:</p>
@@ -550,7 +550,7 @@ here we will overlap with part of that tutorial, exploring exceptions thrown in 
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="k">return</span> <span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="s2">&quot;A throwing UDP&quot;</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s2">"A throwing UDP"</span>
 </pre></div>
 </div>
 <p>Let us now instantiate and run a <a class="reference internal" href="../archipelago.html#pygmo.archipelago" title="pygmo.archipelago"><code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a>:</p>
@@ -565,11 +565,11 @@ here we will overlap with part of that tutorial, exploring exceptions thrown in 
 
 <span class="go">    #  Type                    Algo                            Prob            Size  Status</span>
 <span class="go">    ------------------------------------------------------------------------------------------------------------</span>
-<span class="go">    0  Multiprocessing island  Simulated Annealing (Corana&#39;s)  A throwing UDP  20    idle - **error occurred**</span>
-<span class="go">    1  Multiprocessing island  Simulated Annealing (Corana&#39;s)  A throwing UDP  20    idle - **error occurred**</span>
-<span class="go">    2  Multiprocessing island  Simulated Annealing (Corana&#39;s)  A throwing UDP  20    idle - **error occurred**</span>
-<span class="go">    3  Multiprocessing island  Simulated Annealing (Corana&#39;s)  A throwing UDP  20    idle - **error occurred**</span>
-<span class="go">    4  Multiprocessing island  Simulated Annealing (Corana&#39;s)  A throwing UDP  20    idle - **error occurred**</span>
+<span class="go">    0  Multiprocessing island  Simulated Annealing (Corana's)  A throwing UDP  20    idle - **error occurred**</span>
+<span class="go">    1  Multiprocessing island  Simulated Annealing (Corana's)  A throwing UDP  20    idle - **error occurred**</span>
+<span class="go">    2  Multiprocessing island  Simulated Annealing (Corana's)  A throwing UDP  20    idle - **error occurred**</span>
+<span class="go">    3  Multiprocessing island  Simulated Annealing (Corana's)  A throwing UDP  20    idle - **error occurred**</span>
+<span class="go">    4  Multiprocessing island  Simulated Annealing (Corana's)  A throwing UDP  20    idle - **error occurred**</span>
 </pre></div>
 </div>
 <p>The print statment allows us to visually see that errors occured in all islands (each one is containing a copy of the problem and thus
@@ -581,24 +581,24 @@ scope. To inspect what happened we can write:</p>
 <span class="go">&lt;ipython-input-22-d8562cc51573&gt; in &lt;module&gt;()</span>
 <span class="go">----&gt; 1 archi.wait_check()</span>
 
-<span class="go">RuntimeError: The asynchronous evolution of a pythonic island of type &#39;Multiprocessing island&#39; raised an error:</span>
+<span class="go">RuntimeError: The asynchronous evolution of a pythonic island of type 'Multiprocessing island' raised an error:</span>
 <span class="go">multiprocessing.pool.RemoteTraceback:</span>
-<span class="go">&quot;&quot;&quot;</span>
+<span class="go">"""</span>
 <span class="gt">Traceback (most recent call last):</span>
-<span class="gr">File &quot;/home/dario/miniconda3/envs/pagmo/lib/python3.6/multiprocessing/pool.py&quot;, line 119, in worker</span>
+<span class="gr">File "/home/dario/miniconda3/envs/pagmo/lib/python3.6/multiprocessing/pool.py", line 119, in worker</span>
 <span class="gr">    result = (True, func(*args, **kwds))</span>
-<span class="gr">File &quot;/home/dario/miniconda3/envs/pagmo/lib/python3.6/site-packages/pygmo/_py_islands.py&quot;, line 40, in _evolve_func</span>
+<span class="gr">File "/home/dario/miniconda3/envs/pagmo/lib/python3.6/site-packages/pygmo/_py_islands.py", line 40, in _evolve_func</span>
 <span class="gr">    return algo.evolve(pop)</span>
-<span class="gr">File &quot;&lt;ipython-input-19-f5ede4c63180&gt;&quot;, line 6, in fitness</span>
+<span class="gr">File "&lt;ipython-input-19-f5ede4c63180&gt;", line 6, in fitness</span>
 <span class="gr">RuntimeError</span>: <span class="n">No active exception to reraise</span>
-<span class="x">&quot;&quot;&quot;</span>
+<span class="x">"""</span>
 
 <span class="gt">The above exception was the direct cause of the following exception:</span>
 
 <span class="gt">Traceback (most recent call last):</span>
-<span class="gr">File &quot;/home/dario/miniconda3/envs/pagmo/lib/python3.6/site-packages/pygmo/_py_islands.py&quot;, line 128, in run_evolve</span>
+<span class="gr">File "/home/dario/miniconda3/envs/pagmo/lib/python3.6/site-packages/pygmo/_py_islands.py", line 128, in run_evolve</span>
 <span class="gr">    return res.get()</span>
-<span class="gr">File &quot;/home/dario/miniconda3/envs/pagmo/lib/python3.6/multiprocessing/pool.py&quot;, line 608, in get</span>
+<span class="gr">File "/home/dario/miniconda3/envs/pagmo/lib/python3.6/multiprocessing/pool.py", line 608, in get</span>
 <span class="gr">    raise self._value</span>
 <span class="gr">RuntimeError</span>: <span class="n">No active exception to reraise</span>
 </pre></div>

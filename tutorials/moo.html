@@ -408,14 +408,14 @@ For example, generating a new <a class="reference internal" href="../population.
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pop</span> <span class="o">=</span> <span class="n">population</span><span class="p">(</span><span class="n">udp</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">plot_non_dominated_fronts</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">get_f</span><span class="p">())</span> 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ZDT1: random initial population&quot;</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"ZDT1: random initial population"</span><span class="p">)</span>  
 </pre></div>
 </div>
 <p>where each successive pareto front is plotted in darker colour. If we now type:</p>
 <div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">algo</span> <span class="o">=</span> <span class="n">algorithm</span><span class="p">(</span><span class="n">moead</span><span class="p">(</span><span class="n">gen</span> <span class="o">=</span> <span class="mi">250</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pop</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">evolve</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">plot_non_dominated_fronts</span><span class="p">(</span><span class="n">pop</span><span class="o">.</span><span class="n">get_f</span><span class="p">())</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ZDT1: ... and the evolved population&quot;</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"ZDT1: ... and the evolved population"</span><span class="p">)</span>  
 </pre></div>
 </div>
 <p>we have instantiated the algorithm <a class="reference internal" href="../algorithms.html#pygmo.moead" title="pygmo.moead"><code class="xref py py-class docutils literal notranslate"><span class="pre">moead</span></code></a>, able to tackle

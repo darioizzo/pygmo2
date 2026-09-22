@@ -459,8 +459,8 @@ machinery, and thus great in the context of this tutorial, we discourage this ty
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span> 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res</span><span class="p">))</span> 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ylim</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;16 instances of DE on the Rosenbrock 10 problem&quot;</span><span class="p">)</span> 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;obj. fun.&quot;</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"16 instances of DE on the Rosenbrock 10 problem"</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"obj. fun."</span><span class="p">)</span> 
 </pre></div>
 </div>
 <section id="managing-exceptions">
@@ -474,13 +474,13 @@ following UDP:</p>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">counter</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">fitness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dv</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">==</span> <span class="mi">300</span><span class="p">:</span>
-<span class="gp">... </span>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Ops!&quot;</span><span class="p">)</span>
+<span class="gp">... </span>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Ops!"</span><span class="p">)</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="gp">... </span>        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">counter</span><span class="p">]</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="k">return</span> <span class="p">([</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">])</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">return</span> <span class="s2">&quot;A throwing UDP&quot;</span>
+<span class="gp">... </span>        <span class="k">return</span> <span class="s2">"A throwing UDP"</span>
 </pre></div>
 </div>
 <p>We construct an island:</p>
@@ -506,14 +506,14 @@ This requires that a cluster is started typing, for example, the command <code c
 <span class="go">    Queue status:</span>
 
 <span class="go">    (unassigned, 0)</span>
-<span class="go">    (0, {&#39;queue&#39;: 0, &#39;completed&#39;: ..., &#39;tasks&#39;: 0})</span>
-<span class="go">    (1, {&#39;queue&#39;: 0, &#39;completed&#39;: ..., &#39;tasks&#39;: 0})</span>
-<span class="go">    (2, {&#39;queue&#39;: 0, &#39;completed&#39;: ..., &#39;tasks&#39;: 0})</span>
-<span class="go">    (3, {&#39;queue&#39;: 0, &#39;completed&#39;: ..., &#39;tasks&#39;: 0})</span>
-<span class="go">    (4, {&#39;queue&#39;: 0, &#39;completed&#39;: ..., &#39;tasks&#39;: 0})</span>
-<span class="go">    (5, {&#39;queue&#39;: 0, &#39;completed&#39;: ..., &#39;tasks&#39;: 0})</span>
-<span class="go">    (6, {&#39;queue&#39;: 0, &#39;completed&#39;: ..., &#39;tasks&#39;: 0})</span>
-<span class="go">    (7, {&#39;queue&#39;: 0, &#39;completed&#39;: ..., &#39;tasks&#39;: 0})</span>
+<span class="go">    (0, {'queue': 0, 'completed': ..., 'tasks': 0})</span>
+<span class="go">    (1, {'queue': 0, 'completed': ..., 'tasks': 0})</span>
+<span class="go">    (2, {'queue': 0, 'completed': ..., 'tasks': 0})</span>
+<span class="go">    (3, {'queue': 0, 'completed': ..., 'tasks': 0})</span>
+<span class="go">    (4, {'queue': 0, 'completed': ..., 'tasks': 0})</span>
+<span class="go">    (5, {'queue': 0, 'completed': ..., 'tasks': 0})</span>
+<span class="go">    (6, {'queue': 0, 'completed': ..., 'tasks': 0})</span>
+<span class="go">    (7, {'queue': 0, 'completed': ..., 'tasks': 0})</span>
 
 <span class="go">Algorithm: Differential Evolution</span>
 
@@ -527,17 +527,17 @@ This requires that a cluster is started typing, for example, the command <code c
 <p>What has happened? I need to retrieve that message!</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isl</span><span class="o">.</span><span class="n">wait_check</span><span class="p">()</span> 
 <span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/Users/darioizzo/miniconda3/envs/pagmo/lib/python3.6/doctest.py&quot;</span>, line <span class="m">1330</span>, in <span class="n">__run</span>
+  File <span class="nb">"/Users/darioizzo/miniconda3/envs/pagmo/lib/python3.6/doctest.py"</span>, line <span class="m">1330</span>, in <span class="n">__run</span>
 <span class="w">    </span><span class="n">compileflags</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">test</span><span class="o">.</span><span class="n">globs</span><span class="p">)</span>
-  File <span class="nb">&quot;&lt;doctest default[0]&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">"&lt;doctest default[0]&gt;"</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
 <span class="w">    </span><span class="n">isl</span><span class="o">.</span><span class="n">wait_check</span><span class="p">()</span>
-<span class="gr">RuntimeError</span>: <span class="n">The asynchronous evolution of a pythonic island of type &#39;Ipyparallel island&#39; raised an error:</span>
+<span class="gr">RuntimeError</span>: <span class="n">The asynchronous evolution of a pythonic island of type 'Ipyparallel island' raised an error:</span>
 <span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/Users/darioizzo/.local/lib/python3.6/site-packages/pygmo/_py_islands.py&quot;</span>, line <span class="m">403</span>, in <span class="n">run_evolve</span>
+  File <span class="nb">"/Users/darioizzo/.local/lib/python3.6/site-packages/pygmo/_py_islands.py"</span>, line <span class="m">403</span>, in <span class="n">run_evolve</span>
 <span class="w">    </span><span class="k">return</span> <span class="n">ret</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-  File <span class="nb">&quot;/Users/darioizzo/miniconda3/envs/pagmo/lib/python3.6/site-packages/ipyparallel/client/asyncresult.py&quot;</span>, line <span class="m">167</span>, in <span class="n">get</span>
+  File <span class="nb">"/Users/darioizzo/miniconda3/envs/pagmo/lib/python3.6/site-packages/ipyparallel/client/asyncresult.py"</span>, line <span class="m">167</span>, in <span class="n">get</span>
 <span class="w">    </span><span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">exception</span><span class="p">()</span>
-  File <span class="nb">&quot;/Users/darioizzo/miniconda3/envs/pagmo/lib/python3.6/site-packages/ipyparallel/client/asyncresult.py&quot;</span>, line <span class="m">224</span>, in <span class="n">_resolve_result</span>
+  File <span class="nb">"/Users/darioizzo/miniconda3/envs/pagmo/lib/python3.6/site-packages/ipyparallel/client/asyncresult.py"</span>, line <span class="m">224</span>, in <span class="n">_resolve_result</span>
 <span class="w">    </span><span class="k">raise</span> <span class="n">r</span>
 <span class="gr">ipyparallel.error.RemoteError</span>: <span class="n">ValueError(Ops!)</span>
 </pre></div>

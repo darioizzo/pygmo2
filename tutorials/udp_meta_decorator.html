@@ -470,7 +470,7 @@ it will also print on screen the time needed to compute it. The code is as follo
 <span class="gp">... </span>        <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 <span class="gp">... </span>        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="gp">... </span>        <span class="n">fitness</span> <span class="o">=</span> <span class="n">orig_fitness_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dv</span><span class="p">)</span>
-<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Elapsed time: </span><span class="si">{}</span><span class="s2"> seconds&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">"Elapsed time: </span><span class="si">{}</span><span class="s2"> seconds"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 <span class="gp">... </span>        <span class="k">return</span> <span class="n">fitness</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">new_fitness_function</span>
 </pre></div>
@@ -539,7 +539,7 @@ decision vectors passed to the fitness function.</p>
 <p>The fitness logging decorator is rather simple:</p>
 <div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">f_log_decor</span><span class="p">(</span><span class="n">orig_fitness_function</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">def</span><span class="w"> </span><span class="nf">new_fitness_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dv</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;dv_log&quot;</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"dv_log"</span><span class="p">):</span>
 <span class="gp">... </span>            <span class="bp">self</span><span class="o">.</span><span class="n">dv_log</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dv</span><span class="p">)</span>
 <span class="gp">... </span>        <span class="k">else</span><span class="p">:</span>
 <span class="gp">... </span>            <span class="bp">self</span><span class="o">.</span><span class="n">dv_log</span> <span class="o">=</span> <span class="p">[</span><span class="n">dv</span><span class="p">]</span>
@@ -553,7 +553,7 @@ decision vectors passed to the fitness function.</p>
 condition <code class="docutils literal notranslate"><span class="pre">hasattr(self,</span> <span class="pre">&quot;dv_log&quot;)</span></code> will be <code class="docutils literal notranslate"><span class="pre">False</span></code> because, initially,
 the decorated problem does not contain any logging structure. The decorated
 fitness function will then proceed to add to the problem a 1-element
-<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> called <code class="docutils literal notranslate"><span class="pre">dv_log</span></code> containing the current decision vector <code class="docutils literal notranslate"><span class="pre">dv</span></code>;</p></li>
+<a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#list" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> called <code class="docutils literal notranslate"><span class="pre">dv_log</span></code> containing the current decision vector <code class="docutils literal notranslate"><span class="pre">dv</span></code>;</p></li>
 <li><p>on subsequent calls of the decorated fitness function, the current decision vector
 <code class="docutils literal notranslate"><span class="pre">dv</span></code> will be appended to the <code class="docutils literal notranslate"><span class="pre">dv_log</span></code> list.</p></li>
 </ul>
@@ -562,7 +562,7 @@ fitness function will then proceed to add to the problem a 1-element
 </pre></div>
 </div>
 <p>Second, we verify that the UDP inside <em>drb</em> does not yet contain a <code class="docutils literal notranslate"><span class="pre">dv_log</span></code> logging structure:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">hasattr</span><span class="p">(</span><span class="n">drb</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">decorator_problem</span><span class="p">),</span> <span class="s2">&quot;dv_log&quot;</span><span class="p">)</span>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">hasattr</span><span class="p">(</span><span class="n">drb</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">decorator_problem</span><span class="p">),</span> <span class="s2">"dv_log"</span><span class="p">)</span>
 <span class="go">False</span>
 </pre></div>
 </div>
