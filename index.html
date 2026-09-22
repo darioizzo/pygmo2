@@ -417,6 +417,16 @@ to the <a class="reference external" href="https://doi.org/10.21105/joss.02338">
 <p>The DOI of the latest version of the software is available at
 <a class="reference external" href="https://doi.org/10.5281/zenodo.1045336">this link</a>.</p>
 <p>pygmo is based on the <a class="reference external" href="https://github.com/esa/pagmo2">pagmo C++ library</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>pygmo uses Python’s <a class="reference external" href="https://docs.python.org/3/library/pickle.html#module-pickle" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pickle</span></code></a> module (and, by default, <a class="reference external" href="https://github.com/cloudpipe/cloudpickle">cloudpickle</a>) to (de)serialise user-defined problems,
+algorithms, islands, etc. Exactly as with the standard <a class="reference external" href="https://docs.python.org/3/library/pickle.html#module-pickle" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pickle</span></code></a> module, deserialising
+(unpickling) data is equivalent to arbitrary code execution. Never unpickle, or otherwise
+deserialise, pygmo objects (e.g., <a class="reference internal" href="population.html#pygmo.population" title="pygmo.population"><code class="xref py py-class docutils literal notranslate"><span class="pre">population</span></code></a>, <a class="reference internal" href="archipelago.html#pygmo.archipelago" title="pygmo.archipelago"><code class="xref py py-class docutils literal notranslate"><span class="pre">archipelago</span></code></a>,
+<a class="reference internal" href="problem.html#pygmo.problem" title="pygmo.problem"><code class="xref py py-class docutils literal notranslate"><span class="pre">problem</span></code></a>, <a class="reference internal" href="algorithm.html#pygmo.algorithm" title="pygmo.algorithm"><code class="xref py py-class docutils literal notranslate"><span class="pre">algorithm</span></code></a>, <a class="reference internal" href="bfe.html#pygmo.bfe" title="pygmo.bfe"><code class="xref py py-class docutils literal notranslate"><span class="pre">bfe</span></code></a>,
+<a class="reference internal" href="island.html#pygmo.island" title="pygmo.island"><code class="xref py py-class docutils literal notranslate"><span class="pre">island</span></code></a>, <a class="reference internal" href="r_policy.html#pygmo.r_policy" title="pygmo.r_policy"><code class="xref py py-class docutils literal notranslate"><span class="pre">r_policy</span></code></a>, <a class="reference internal" href="s_policy.html#pygmo.s_policy" title="pygmo.s_policy"><code class="xref py py-class docutils literal notranslate"><span class="pre">s_policy</span></code></a>,
+<a class="reference internal" href="topology.html#pygmo.topology" title="pygmo.topology"><code class="xref py py-class docutils literal notranslate"><span class="pre">topology</span></code></a>) coming from an untrusted or unauthenticated source.</p>
+</div>
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -458,15 +468,16 @@ to the <a class="reference external" href="https://doi.org/10.21105/joss.02338">
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#unreleased">Unreleased</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#id2">2.19.7 (2024-08-09)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id3">2.19.6 (2024-02-21)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id5">2.19.0 (2023-01-19)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id8">2.18.0 (2021-08-03)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id12">2.16.1 (2020-12-22)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id15">2.16.0 (2020-09-25)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id18">2.15.0 (2020-04-02)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id21">2.14.1 (2020-03-06)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id23">2.14.0 (2020-03-04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id4">2.19.6 (2024-02-21)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id6">2.19.0 (2023-01-19)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id9">2.18.0 (2021-08-03)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id13">2.16.1 (2020-12-22)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id16">2.16.0 (2020-09-25)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id19">2.15.0 (2020-04-02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id22">2.14.1 (2020-03-06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id24">2.14.0 (2020-03-04)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="known_issues.html">Known issues</a></li>

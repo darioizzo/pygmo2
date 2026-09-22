@@ -494,6 +494,13 @@ serialization backend.</p>
 the serialization backend while concurrently setting/getting it from another thread,
 or while asynchronous evolutions/optimisations are ongoing.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Both <code class="docutils literal notranslate"><span class="pre">'pickle'</span></code> and <code class="docutils literal notranslate"><span class="pre">'cloudpickle'</span></code> are, exactly like the standard <a class="reference external" href="https://docs.python.org/3/library/pickle.html#module-pickle" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pickle</span></code></a>
+module, insecure against maliciously-constructed data: deserialising (unpickling) such
+data can lead to arbitrary code execution. Never change this setting to accommodate, nor
+otherwise deserialise, data coming from an untrusted or unauthenticated source.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/builtins/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – the name of the desired backend</p>
